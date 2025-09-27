@@ -1,10 +1,10 @@
 import './App.css';
-import FormPage from './views/form/index';
+import HomePage from './views/home/index';
 
 function App() {
   return (
     <>
-      <FormPage />
+      <HomePage />
     </>
   );
 }

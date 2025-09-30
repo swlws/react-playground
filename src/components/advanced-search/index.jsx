@@ -1,20 +1,24 @@
 import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 
+import Tree from './tree/index';
+
+import './index.scss';
+
 function AdvancedSearch(props, ref) {
   const domRef = useRef(null);
-  const [name, setName] = useState('');
+  const [treeData, setTreeData] = useState({});
 
   useImperativeHandle(ref, () => ({
     el: domRef.current,
-    setActiveFieldGroup: () => {
-      setName('xxx');
+    setData: (data) => {
+      setTreeData(data);
     },
   }));
 
   return (
-    <div ref={domRef}>
+    <div className="advanced-search" ref={domRef}>
       <label>Advance Search</label>
-      <input value={name} />
+      <Tree title={treeData.title} list={treeData.list} />
     </div>
   );
 }

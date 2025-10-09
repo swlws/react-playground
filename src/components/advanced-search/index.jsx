@@ -1,4 +1,10 @@
-import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
+import {
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react';
 
 import Tree from './tree/index';
 
@@ -16,25 +22,28 @@ function AdvancedSearch(props, ref) {
     },
   }));
 
-  const onComponentValueChange = (rowId, componentId, value) => {
-    const newTreeData = updateTargetComponentValue({
-      treeData,
-      rowId,
-      componentId,
-      value,
-    });
-    setTreeData(newTreeData);
-  };
+  const onComponentValueChange = useCallback((rowId, componentId, value) => {
+    setTreeData((prev) =>
+      updateTargetComponentValue({
+        treeData: prev,
+        rowId,
+        componentId,
+        value,
+      })
+    );
+  }, []);
 
   return (
     <div className="advanced-search" ref={domRef}>
       <label>Advance Search</label>
-      <Tree
-        id={treeData.id}
-        title={treeData.title}
-        list={treeData.list}
-        onComponentValueChange={onComponentValueChange}
-      />
+      {treeData && (
+        <Tree
+          id={treeData.id}
+          title={treeData.title}
+          list={treeData.list}
+          onComponentValueChange={onComponentValueChange}
+        />
+      )}
     </div>
   );
 }

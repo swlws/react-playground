@@ -2,4 +2,15 @@
   &__tree-node__children {
     padding-left: 20px;
   }
+
+  &__tree-node {
+    &__row {
+      margin: 4px;
+      padding: 4px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      display: flex;
+      gap: 8px;
+    }
+  }
 }

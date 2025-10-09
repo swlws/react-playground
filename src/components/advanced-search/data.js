@@ -22,8 +22,10 @@ export const schema = {
 
 export const treeData = {
   title: '根组',
+  id: 'gid-001',
   list: [
     {
+      id: 'row-id-001',
       row: [
         { id: 'left@leftBracket', componentType: 'leftBracket', value: ['('] },
         { id: 'name@input', componentType: 'input', value: [''] },
@@ -36,9 +38,11 @@ export const treeData = {
       state: {},
       treeData: [
         {
+          id: 'gid-002',
           title: '内嵌组',
           list: [
             {
+              id: 'row-id-001-001',
               row: [
                 {
                   id: 'left@leftBracket',
@@ -56,6 +60,7 @@ export const treeData = {
               groupList: [],
             },
             {
+              id: 'row-id-001-002',
               row: [
                 {
                   id: 'left@leftBracket',
@@ -76,6 +81,7 @@ export const treeData = {
       ],
     },
     {
+      id: 'row-id-002',
       row: [
         { id: 'left@leftBracket', componentType: 'leftBracket', value: ['('] },
         { id: 'name@input', componentType: 'input', value: [''] },

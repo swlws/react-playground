@@ -15,10 +15,19 @@ function AdvancedSearch(props, ref) {
     },
   }));
 
+  const onComponentValueChange = (rowId, componentId, value) => {
+    console.log('onComponentValueChange', rowId, componentId, value);
+  };
+
   return (
     <div className="advanced-search" ref={domRef}>
       <label>Advance Search</label>
-      <Tree title={treeData.title} list={treeData.list} />
+      <Tree
+        id={treeData.id}
+        title={treeData.title}
+        list={treeData.list}
+        onComponentValueChange={onComponentValueChange}
+      />
     </div>
   );
 }

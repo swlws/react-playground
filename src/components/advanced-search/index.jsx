@@ -3,6 +3,7 @@ import { forwardRef, useImperativeHandle, useRef, useState } from 'react';
 import Tree from './tree/index';
 
 import './index.scss';
+import { updateTargetComponentValue } from './helper/update-component-value';
 
 function AdvancedSearch(props, ref) {
   const domRef = useRef(null);
@@ -16,7 +17,13 @@ function AdvancedSearch(props, ref) {
   }));
 
   const onComponentValueChange = (rowId, componentId, value) => {
-    console.log('onComponentValueChange', rowId, componentId, value);
+    const newTreeData = updateTargetComponentValue({
+      treeData,
+      rowId,
+      componentId,
+      value,
+    });
+    setTreeData(newTreeData);
   };
 
   return (

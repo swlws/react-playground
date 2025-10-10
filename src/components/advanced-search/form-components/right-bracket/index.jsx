@@ -9,7 +9,7 @@ export default function RightBracket(props) {
 
   return (
     <div className={`${NAMESPACE}__form__right-bracket`}>
-      <input value={value[0]} onChange={onChange}></input>
+      <input type="text" value={value[0]} onChange={onChange}></input>
     </div>
   );
 }

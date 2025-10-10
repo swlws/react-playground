@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function App() {
   return (
-    <article className="app-main">
+    <article className="app-main ui-theme">
       <nav className="app-nav">
         <Link to="/">Home</Link>
         <Link to="/demo">Demo</Link>

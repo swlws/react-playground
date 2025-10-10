@@ -9,7 +9,7 @@ export default function LeftBracket(props) {
 
   return (
     <div className={`${NAMESPACE}__form__input`}>
-      <input value={value[0]} onChange={onChange}></input>
+      <input type="text" value={value[0]} onChange={onChange}></input>
     </div>
   );
 }

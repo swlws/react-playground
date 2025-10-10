@@ -1,9 +1,14 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import WithErrorBoundary from '../../components/with-error-boundary';
 
 let oldAddValueFn;
 let oldCallbackRef;
-export default function Demo() {
+function Demo() {
   console.log('Demo Render');
+
+  if (Math.random() > 0.5) {
+    throw new Error('error');
+  }
 
   const [value, setValue] = useState(1);
   const callbackRef = useRef(() => {});
@@ -15,7 +20,6 @@ export default function Demo() {
   const addValue = useCallback(() => {
     console.log('call addValue');
     setValue(value + 1);
-    // setValue((pre) => pre + 1);
   }, [value]);
 
   // 因为 value 的变化，导致 addValue 会每次重新创建
@@ -34,6 +38,15 @@ export default function Demo() {
     </div>
   );
 }
+
+const SafeComponent = WithErrorBoundary(Demo, (error, reset) => (
+  <div>
+    <p style={{ color: 'red' }}>组件出错: {error.message}</p>
+    <button onClick={reset}>重试</button>
+  </div>
+));
+
+export default SafeComponent;
 
 // addValue 的调优方案，使用 setValue。
 // 二次渲染时，value 的引用变化；setValue 的引用不变

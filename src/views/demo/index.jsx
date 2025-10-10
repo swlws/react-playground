@@ -15,6 +15,7 @@ export default function Demo() {
   const addValue = useCallback(() => {
     console.log('call addValue');
     setValue(value + 1);
+    // setValue((pre) => pre + 1);
   }, [value]);
 
   // 因为 value 的变化，导致 addValue 会每次重新创建
@@ -33,3 +34,10 @@ export default function Demo() {
     </div>
   );
 }
+
+// addValue 的调优方案，使用 setValue。
+// 二次渲染时，value 的引用变化；setValue 的引用不变
+// const addValue = useCallback(() => {
+//   console.log('call addValue');
+//   setValue((pre) => pre + 1);
+// }, []);

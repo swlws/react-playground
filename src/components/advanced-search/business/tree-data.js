@@ -7,28 +7,28 @@ import { produce } from 'immer';
  */
 export function updateTargetComponentValueWithImmer({
   treeData,
-  rowId,
+  nodeId,
   componentId,
   value,
 }) {
   return produce(treeData, (draft) => {
-    const rows = [...draft.list];
-    while (rows.length) {
-      const row = rows.shift();
-      if (row.id === rowId) {
-        const rowData = row.data.find(
+    const nodeList = [...draft.list];
+    while (nodeList.length) {
+      const node = nodeList.shift();
+      if (node.id === nodeId) {
+        const component = node.data.find(
           (component) => component.id === componentId
         );
-        rowData.value = value;
+        component.value = value;
         return;
       }
 
-      if (row.treeData && row.treeData.length) {
-        const childList = row.treeData.reduce((acc, item) => {
+      if (node.treeData && node.treeData.length) {
+        const childList = node.treeData.reduce((acc, item) => {
           acc.push(...item.list);
           return acc;
         }, []);
-        rows.push(...childList);
+        nodeList.push(...childList);
       }
     }
   });

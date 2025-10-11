@@ -44,7 +44,7 @@ export default function TreeNode(props) {
   const onValueChange = (componentId, value) => {
     treeDataDispatch({
       type: ENUM_TREE_DATA_OPERATION.UPDATE_TARGET_COMPONENT_VALUE,
-      payload: { rowId: id, componentId, value },
+      payload: { nodeId: id, componentId, value },
     });
   };
 

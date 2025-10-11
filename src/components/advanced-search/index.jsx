@@ -9,7 +9,7 @@ import {
 import Tree from './tree/index';
 
 import './index.scss';
-import { updateTargetComponentValue } from './helper/update-component-value';
+import { updateTargetComponentValueWithImmer } from './helper/update-component-value';
 
 function AdvancedSearch(props, ref) {
   const domRef = useRef(null);
@@ -24,7 +24,7 @@ function AdvancedSearch(props, ref) {
 
   const onComponentValueChange = useCallback((rowId, componentId, value) => {
     setTreeData((prev) =>
-      updateTargetComponentValue({
+      updateTargetComponentValueWithImmer({
         treeData: prev,
         rowId,
         componentId,

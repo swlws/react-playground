@@ -13,10 +13,7 @@ export function treeDataReducer(state, action) {
     case ENUM_TREE_DATA_OPERATION.SET_TREE_DATA:
       return action.payload;
     case ENUM_TREE_DATA_OPERATION.UPDATE_TARGET_COMPONENT_VALUE: {
-      const params = {
-        ...action.payload,
-        treeData: state,
-      };
+      const params = { ...action.payload, treeData: state };
       return updateTargetComponentValueWithImmer(params);
     }
     default:

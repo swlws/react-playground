@@ -1,12 +1,7 @@
 // 方法
-import {
-  forwardRef,
-  useCallback,
-  useImperativeHandle,
-  useReducer,
-  useRef,
-} from 'react';
+import { forwardRef, useImperativeHandle, useReducer, useRef } from 'react';
 import { treeDataReducer } from './reducer/tree-data';
+import { TreeDataContext, TreeDataDispatchContext } from './context/tree-data';
 
 // 组件
 import Tree from './tree/index';
@@ -31,24 +26,20 @@ function AdvancedSearch(props, ref) {
     },
   }));
 
-  const onComponentValueChange = useCallback((rowId, componentId, value) => {
-    dispatch({
-      type: ENUM_TREE_DATA_OPERATION.UPDATE_TARGET_COMPONENT_VALUE,
-      payload: { rowId, componentId, value },
-    });
-  }, []);
-
   return (
     <div ref={domRef} className="advanced-search">
-      <label>Advance Search</label>
-      {treeData && (
-        <Tree
-          id={treeData.id}
-          title={treeData.title}
-          list={treeData.list}
-          onComponentValueChange={onComponentValueChange}
-        />
-      )}
+      <TreeDataContext.Provider value={treeData}>
+        <TreeDataDispatchContext.Provider value={dispatch}>
+          <label>Advance Search</label>
+          {treeData && (
+            <Tree
+              id={treeData.id}
+              title={treeData.title}
+              list={treeData.list}
+            />
+          )}
+        </TreeDataDispatchContext.Provider>
+      </TreeDataContext.Provider>
     </div>
   );
 }

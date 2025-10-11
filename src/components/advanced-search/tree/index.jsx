@@ -3,7 +3,7 @@ import TreeNode from '../tree-node/index';
 import { NAMESPACE } from '../constant';
 
 export default function Tree(props) {
-  const { title = '', list = [], onComponentValueChange } = props;
+  const { title = '', list = [] } = props;
 
   const renderRows = (list) => {
     return list.map((item, index) => {
@@ -15,7 +15,6 @@ export default function Tree(props) {
           data={data}
           state={state}
           treeData={treeData}
-          onComponentValueChange={onComponentValueChange}
         />
       );
     });

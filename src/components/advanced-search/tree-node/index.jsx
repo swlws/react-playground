@@ -4,10 +4,10 @@ import { NAMESPACE } from '../constant';
 import FormComponent from './form-component';
 
 // 渲染行
-function renderRow(row, onValueChange) {
+function renderRow(data, onValueChange) {
   return (
     <div className={[`${NAMESPACE}__tree-node__row`]}>
-      {row.map((item) => {
+      {data.map((item) => {
         const { id, componentType, value } = item;
         return (
           <FormComponent
@@ -44,7 +44,7 @@ const renderTree = (treeData, onComponentValueChange) => {
 };
 
 export default function TreeNode(props) {
-  const { id, row, treeData = [], onComponentValueChange } = props;
+  const { id, data, treeData = [], onComponentValueChange } = props;
 
   const onValueChange = (componentId, value) => {
     onComponentValueChange(id, componentId, value);
@@ -52,7 +52,7 @@ export default function TreeNode(props) {
 
   return (
     <div className={[`${NAMESPACE}__tree-node`]}>
-      {renderRow(row, onValueChange)}
+      {renderRow(data, onValueChange)}
       {renderTree(treeData, onComponentValueChange)}
     </div>
   );

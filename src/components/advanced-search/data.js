@@ -26,7 +26,7 @@ export const treeData = {
   list: [
     {
       id: 'row-id-001',
-      row: [
+      data: [
         { id: 'left@leftBracket', componentType: 'leftBracket', value: ['('] },
         { id: 'name@input', componentType: 'input', value: [''] },
         {
@@ -43,7 +43,7 @@ export const treeData = {
           list: [
             {
               id: 'row-id-001-001',
-              row: [
+              data: [
                 {
                   id: 'left@leftBracket',
                   componentType: 'leftBracket',
@@ -61,7 +61,7 @@ export const treeData = {
             },
             {
               id: 'row-id-001-002',
-              row: [
+              data: [
                 {
                   id: 'left@leftBracket',
                   componentType: 'leftBracket',
@@ -82,7 +82,7 @@ export const treeData = {
     },
     {
       id: 'row-id-002',
-      row: [
+      data: [
         { id: 'left@leftBracket', componentType: 'leftBracket', value: ['('] },
         { id: 'name@input', componentType: 'input', value: [''] },
         {

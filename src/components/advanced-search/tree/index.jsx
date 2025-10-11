@@ -7,12 +7,12 @@ export default function Tree(props) {
 
   const renderRows = (list) => {
     return list.map((item, index) => {
-      const { id, row, state, treeData } = item;
+      const { id, data, state, treeData } = item;
       return (
         <TreeNode
           key={index}
           id={id}
-          row={row}
+          data={data}
           state={state}
           treeData={treeData}
           onComponentValueChange={onComponentValueChange}

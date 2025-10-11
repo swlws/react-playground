@@ -16,7 +16,10 @@ export function updateTargetComponentValueWithImmer({
     while (rows.length) {
       const row = rows.shift();
       if (row.id === rowId) {
-        row.row.find((component) => component.id === componentId).value = value;
+        const rowData = row.data.find(
+          (component) => component.id === componentId
+        );
+        rowData.value = value;
         return;
       }
 

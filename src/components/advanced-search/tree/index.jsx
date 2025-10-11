@@ -5,7 +5,7 @@ import { NAMESPACE } from '../constant';
 export default function Tree(props) {
   const { title = '', list = [] } = props;
 
-  const renderRows = (list) => {
+  const renderTreeNodeList = (list) => {
     return list.map((item, index) => {
       const { id, data, state, treeData } = item;
       return (
@@ -24,7 +24,7 @@ export default function Tree(props) {
     <section className={`${NAMESPACE}__tree`}>
       <header>{title}</header>
 
-      <main>{renderRows(list)}</main>
+      <main>{renderTreeNodeList(list)}</main>
     </section>
   );
 }

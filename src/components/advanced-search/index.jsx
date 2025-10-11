@@ -12,6 +12,11 @@ import { ENUM_TREE_DATA_OPERATION } from './constant';
 // 样式
 import './index.scss';
 
+/**
+ * 高级搜索上下文组件
+ * @param {*} param0
+ * @returns
+ */
 function AdvancedSearchContext({ treeData, dispatch, children }) {
   return (
     <TreeDataContext.Provider value={treeData}>
@@ -22,6 +27,12 @@ function AdvancedSearchContext({ treeData, dispatch, children }) {
   );
 }
 
+/**
+ * 高级搜索组件
+ * @param {*} props
+ * @param {*} ref
+ * @returns
+ */
 function AdvancedSearch(props, ref) {
   const domRef = useRef(null);
   const [treeData, dispatch] = useReducer(treeDataReducer, {});

@@ -37,14 +37,13 @@ const renderTree = (treeData) => {
   );
 };
 
-export default function TreeNode(props) {
-  const { id, data, treeData = [] } = props;
+export default function TreeNode({ id: nodeId, data, treeData = [] }) {
   const treeDataDispatch = useTreeDataDispatch();
 
   const onValueChange = (componentId, value) => {
     treeDataDispatch({
       type: ENUM_TREE_DATA_OPERATION.UPDATE_TARGET_COMPONENT_VALUE,
-      payload: { nodeId: id, componentId, value },
+      payload: { nodeId, componentId, value },
     });
   };
 

@@ -4,7 +4,7 @@ import { NAMESPACE } from '../constant';
 import FormComponent from './form-component';
 
 // 渲染行
-function renderRow(data, onValueChange) {
+function renderTreeNode(data, onValueChange) {
   return (
     <div className={[`${NAMESPACE}__tree-node__row`]}>
       {data.map((item) => {
@@ -52,7 +52,7 @@ export default function TreeNode(props) {
 
   return (
     <div className={[`${NAMESPACE}__tree-node`]}>
-      {renderRow(data, onValueChange)}
+      {renderTreeNode(data, onValueChange)}
       {renderTree(treeData, onComponentValueChange)}
     </div>
   );

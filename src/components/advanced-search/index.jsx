@@ -6,10 +6,11 @@ import {
   useState,
 } from 'react';
 
+import { updateTargetComponentValueWithImmer } from './business/tree-data';
+
 import Tree from './tree/index';
 
 import './index.scss';
-import { updateTargetComponentValueWithImmer } from './helper/update-component-value';
 
 function AdvancedSearch(props, ref) {
   const domRef = useRef(null);

@@ -5,7 +5,7 @@ import {
 } from 'use-context-selector';
 
 /** 树形数据上下文 */
-export const TreeDataContext = createContext(null);
+export const TreeDataContext = createContext({});
 
 /** 使用树形节点数据上下文 */
 export const useTreeNodeData = (id) => {

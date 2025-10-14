@@ -3,6 +3,8 @@ import { updateTargetComponentValueWithImmer } from './tree-data/index.js';
 
 /**
  * 树形数据 reducer
+ *   优化点: 配合 useContextSelector 优化性能, 保持 state 引用不用，使用 Object.assign
+ *
  * @param {*} state
  * @param {*} action
  * @returns

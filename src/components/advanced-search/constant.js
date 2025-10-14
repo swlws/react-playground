@@ -2,7 +2,7 @@
 export const NAMESPACE = 'advanced-search';
 
 // 根节点 ID
-export const ID_ROOT = 'root';
+export const ID_ROOT = 'gid-root';
 
 /** 树形数据相关操作 */
 export const ENUM_TREE_DATA_OPERATION = {

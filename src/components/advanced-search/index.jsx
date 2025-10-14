@@ -1,11 +1,5 @@
 // 方法
-import {
-  forwardRef,
-  useImperativeHandle,
-  useMemo,
-  useReducer,
-  useRef,
-} from 'react';
+import { forwardRef, useImperativeHandle, useReducer, useRef } from 'react';
 import { treeDataReducer } from './action/tree-data-reducer';
 import { TreeDataContext, TreeDataDispatchContext } from './context/tree-data';
 
@@ -24,13 +18,9 @@ import './index.scss';
  * @returns
  */
 function AdvancedSearchContext({ treeData, dispatch, children }) {
-  // ✅ 使用 useMemo 保证引用稳定
-  const value = useMemo(() => treeData, [treeData]);
-  const dispatchValue = useMemo(() => dispatch, [dispatch]);
-
   return (
-    <TreeDataContext.Provider value={value}>
-      <TreeDataDispatchContext.Provider value={dispatchValue}>
+    <TreeDataContext.Provider value={treeData}>
+      <TreeDataDispatchContext.Provider value={dispatch}>
         {children}
       </TreeDataDispatchContext.Provider>
     </TreeDataContext.Provider>

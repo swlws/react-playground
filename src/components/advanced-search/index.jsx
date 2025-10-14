@@ -1,6 +1,6 @@
 // 方法
 import { forwardRef, useImperativeHandle, useReducer, useRef } from 'react';
-import { treeDataReducer } from './reducer/tree-data';
+import { treeDataReducer } from './action/tree-data-reducer';
 import { TreeDataContext, TreeDataDispatchContext } from './context/tree-data';
 
 // 组件

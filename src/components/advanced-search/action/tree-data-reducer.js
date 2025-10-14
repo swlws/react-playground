@@ -1,5 +1,5 @@
 import { ENUM_TREE_DATA_OPERATION } from '../constant';
-import { updateTargetComponentValueWithImmer } from '../business/tree-data';
+import { updateTargetComponentValueWithImmer } from './tree-data/index.js';
 
 /**
  * 树形数据 reducer

@@ -3,7 +3,7 @@ import Tree from '../tree/index';
 
 import { ENUM_TREE_DATA_OPERATION, NAMESPACE } from '../constant';
 import FormComponent from './form-component';
-import { useTreeData, useTreeDataDispatch } from '../context/tree-data';
+import { useTreeDataDispatch, useTreeNodeData } from '../context/tree-data';
 
 // 渲染行
 function renderTreeNode(data, onValueChange) {
@@ -39,10 +39,8 @@ const renderTree = (treeList) => {
 
 function TreeNode({ id: nodeId }) {
   console.log('TreeNode Render ID: ', nodeId);
-  const treeData = useTreeData();
+  const { data = [], treeList = [] } = useTreeNodeData(nodeId) || {};
   const treeDataDispatch = useTreeDataDispatch();
-
-  const { data = [], treeList = [] } = treeData[nodeId] || {};
 
   const onValueChange = (componentId, value) => {
     treeDataDispatch({

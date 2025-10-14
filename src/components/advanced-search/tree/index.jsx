@@ -2,13 +2,12 @@ import { memo } from 'react';
 import TreeNode from '../tree-node/index';
 
 import { NAMESPACE } from '../constant';
-import { useTreeData } from '../context/tree-data';
+import { useTreeNodeData } from '../context/tree-data';
 
 function Tree(props) {
   const { id } = props;
   console.log('Tree Render ID: ', id);
-  const treeData = useTreeData();
-  const { title = '', nodeList = [] } = treeData[id] || {};
+  const { title = '', nodeList = [] } = useTreeNodeData(id) || {};
 
   const renderTreeNodeList = (nodeList) => {
     return nodeList.map((nodeId) => {

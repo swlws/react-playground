@@ -1,12 +1,17 @@
-import { createContext, useContext } from 'react';
+import {
+  createContext,
+  useContextSelector,
+  useContext,
+} from 'use-context-selector';
 
 /** 树形数据上下文 */
 export const TreeDataContext = createContext(null);
 
-/** 使用树形数据上下文 */
-export function useTreeData() {
-  return useContext(TreeDataContext);
-}
+/** 使用树形节点数据上下文 */
+export const useTreeNodeData = (id) => {
+  console.log('\t\tuseTreeNodeData', id);
+  return useContextSelector(TreeDataContext, (treeData) => treeData[id]);
+};
 
 /** 树形数据操作上下文 */
 export const TreeDataDispatchContext = createContext(null);

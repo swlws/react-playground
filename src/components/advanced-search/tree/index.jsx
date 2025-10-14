@@ -1,22 +1,18 @@
+import { memo } from 'react';
 import TreeNode from '../tree-node/index';
 
 import { NAMESPACE } from '../constant';
+import { useTreeData } from '../context/tree-data';
 
-export default function Tree(props) {
-  const { title = '', list = [] } = props;
+function Tree(props) {
+  const { id } = props;
+  console.log('Tree Render ID: ', id);
+  const treeData = useTreeData();
+  const { title = '', nodeList = [] } = treeData[id] || {};
 
-  const renderTreeNodeList = (list) => {
-    return list.map((item, index) => {
-      const { id, data, state, treeData } = item;
-      return (
-        <TreeNode
-          key={index}
-          id={id}
-          data={data}
-          state={state}
-          treeData={treeData}
-        />
-      );
+  const renderTreeNodeList = (nodeList) => {
+    return nodeList.map((nodeId) => {
+      return <TreeNode key={nodeId} id={nodeId} />;
     });
   };
 
@@ -24,7 +20,9 @@ export default function Tree(props) {
     <section className={`${NAMESPACE}__tree`}>
       <header>{title}</header>
 
-      <main>{renderTreeNodeList(list)}</main>
+      <main>{renderTreeNodeList(nodeList)}</main>
     </section>
   );
 }
+
+export default memo(Tree);

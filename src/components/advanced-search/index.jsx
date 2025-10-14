@@ -7,7 +7,7 @@ import { TreeDataContext, TreeDataDispatchContext } from './context/tree-data';
 import Tree from './tree/index';
 
 // 变量
-import { ENUM_TREE_DATA_OPERATION } from './constant';
+import { ENUM_TREE_DATA_OPERATION, ID_ROOT } from './constant';
 
 // 样式
 import './index.scss';
@@ -51,9 +51,7 @@ function AdvancedSearch(props, ref) {
     <div ref={domRef} className="advanced-search">
       <AdvancedSearchContext treeData={treeData} dispatch={dispatch}>
         <label>Advance Search</label>
-        {treeData && (
-          <Tree id={treeData.id} title={treeData.title} list={treeData.list} />
-        )}
+        {treeData && <Tree id={ID_ROOT} />}
       </AdvancedSearchContext>
     </div>
   );

@@ -1,8 +1,9 @@
+import { memo } from 'react';
 import Tree from '../tree/index';
 
 import { ENUM_TREE_DATA_OPERATION, NAMESPACE } from '../constant';
 import FormComponent from './form-component';
-import { useTreeDataDispatch } from '../context/tree-data';
+import { useTreeData, useTreeDataDispatch } from '../context/tree-data';
 
 // 渲染行
 function renderTreeNode(data, onValueChange) {
@@ -26,19 +27,22 @@ function renderTreeNode(data, onValueChange) {
 }
 
 // 渲染树结构
-const renderTree = (treeData) => {
+const renderTree = (treeList) => {
   return (
     <div className={[`${NAMESPACE}__tree-node__children`]}>
-      {treeData.map((item) => {
-        const { id, title, list } = item;
-        return <Tree key={id} title={title} list={list} />;
+      {treeList.map((treeId) => {
+        return <Tree key={treeId} id={treeId} />;
       })}
     </div>
   );
 };
 
-export default function TreeNode({ id: nodeId, data, treeData = [] }) {
+function TreeNode({ id: nodeId }) {
+  console.log('TreeNode Render ID: ', nodeId);
+  const treeData = useTreeData();
   const treeDataDispatch = useTreeDataDispatch();
+
+  const { data = [], treeList = [] } = treeData[nodeId] || {};
 
   const onValueChange = (componentId, value) => {
     treeDataDispatch({
@@ -50,7 +54,9 @@ export default function TreeNode({ id: nodeId, data, treeData = [] }) {
   return (
     <div className={[`${NAMESPACE}__tree-node`]}>
       {renderTreeNode(data, onValueChange)}
-      {renderTree(treeData)}
+      {renderTree(treeList)}
     </div>
   );
 }
+
+export default memo(TreeNode);

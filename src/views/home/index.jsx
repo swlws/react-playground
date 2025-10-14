@@ -2,7 +2,8 @@ import { useEffect, useRef } from 'react';
 import AdvancedSearch from '../../components/advanced-search';
 import {
   schema,
-  treeData,
+  // treeData,
+  flatTreeData,
   defaultRow,
 } from '../../components/advanced-search/data';
 
@@ -12,7 +13,7 @@ export default function HomePage() {
   useEffect(() => {
     console.log(advancedSearchRef.current);
 
-    advancedSearchRef.current.setData(treeData);
+    advancedSearchRef.current.setData(flatTreeData);
   }, []);
 
   return (

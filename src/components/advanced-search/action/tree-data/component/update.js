@@ -12,24 +12,10 @@ export function updateTargetComponentValueWithImmer({
   value,
 }) {
   return produce(treeData, (draft) => {
-    const nodeList = [...draft.list];
-    while (nodeList.length) {
-      const node = nodeList.shift();
-      if (node.id === nodeId) {
-        const component = node.data.find(
-          (component) => component.id === componentId
-        );
-        component.value = value;
-        return;
-      }
-
-      if (node.treeData && node.treeData.length) {
-        const childList = node.treeData.reduce((acc, item) => {
-          acc.push(...item.list);
-          return acc;
-        }, []);
-        nodeList.push(...childList);
-      }
-    }
+    const node = draft[nodeId];
+    const component = node.data.find(
+      (component) => component.id === componentId
+    );
+    component.value = value;
   });
 }

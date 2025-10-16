@@ -23,7 +23,7 @@ function renderTreeNode({ data, validateResult, onValueChange }) {
       {data.map((item) => {
         const { id, componentType, value } = item;
         const { state: validateState, message: validateMessage } =
-          validateResult[id] || {};
+          validateResult[`${id}.0`] || {};
         return (
           <FormComponent
             key={id}

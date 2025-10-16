@@ -13,4 +13,10 @@
       gap: 8px;
     }
   }
+
+  &__tree-node__row__form-component {
+    &.validate-error {
+      outline: 1px solid red;
+    }
+  }
 }

@@ -21,13 +21,11 @@ export function validateWhenComponentValueChange({
 
 export function setComponentValidateResult({ validateResult, nodeId, errors }) {
   return produce(validateResult, (draft) => {
+    draft[nodeId] = {};
+
     if (!errors) {
       draft[nodeId] = {};
       return;
-    }
-
-    if (!draft[nodeId]) {
-      draft[nodeId] = {};
     }
 
     for (const error of errors) {

@@ -1,6 +1,6 @@
 import { produce } from 'immer';
 import { validateRulesWithData } from './validator-tool';
-import { ensureComponentState } from './helper';
+import { ENUM_VALIDATE_STATE } from '../../constant';
 
 /**
  * 验证树形结构中指定组件的值
@@ -19,15 +19,22 @@ export function validateWhenComponentValueChange({
   });
 }
 
-export function setComponentValidateResult({
-  validateResult,
-  nodeId,
-  componentId,
-  result,
-}) {
+export function setComponentValidateResult({ validateResult, nodeId, errors }) {
   return produce(validateResult, (draft) => {
-    const componentState = ensureComponentState(draft, nodeId, componentId);
+    if (!errors) {
+      draft[nodeId] = {};
+      return;
+    }
 
-    componentState.value = result;
+    if (!draft[nodeId]) {
+      draft[nodeId] = {};
+    }
+
+    for (const error of errors) {
+      draft[nodeId][error.field] = {
+        state: ENUM_VALIDATE_STATE.ERROR,
+        message: error.message,
+      };
+    }
   });
 }

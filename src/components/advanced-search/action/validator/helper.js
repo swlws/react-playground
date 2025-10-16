@@ -14,7 +14,5 @@ export function ensureComponentState(validateResult, nodeId, componentId) {
   if (!nodeState[componentId]) {
     nodeState[componentId] = {};
   }
-  const componentState = nodeState[componentId];
-
-  return componentState;
+  return nodeState[componentId];
 }

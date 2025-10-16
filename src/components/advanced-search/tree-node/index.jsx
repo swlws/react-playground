@@ -4,25 +4,33 @@ import Tree from '../tree/index';
 import {
   ENUM_TREE_DATA_OPERATION,
   ENUM_TREE_DATA_VALIDATE_ACTION,
+  ENUM_VALIDATE_STATE,
   NAMESPACE,
 } from '../constant';
 import FormComponent from './form-component';
 import { useTreeDataDispatch, useTreeNodeData } from '../context/tree-data';
 import { useForceRender } from '../hooks';
-import { useValidatorResultDispatch } from '../context/validator';
+import {
+  useValidatorResult,
+  useValidatorResultDispatch,
+} from '../context/validator';
 import { getFormData, getValidateRules } from './helper';
 
 // 渲染行
-function renderTreeNode(data, onValueChange) {
+function renderTreeNode({ data, validateResult, onValueChange }) {
   return (
     <div className={[`${NAMESPACE}__tree-node__row`]}>
       {data.map((item) => {
         const { id, componentType, value } = item;
+        const { state: validateState, message: validateMessage } =
+          validateResult[id] || {};
         return (
           <FormComponent
             key={id}
             componentType={componentType}
             value={value}
+            validateState={validateState}
+            validateMessage={validateMessage}
             onChange={(newValue) => {
               onValueChange(item.id, newValue, value);
             }}
@@ -50,7 +58,11 @@ function TreeNode({ id: nodeId }) {
 
   const { data = [], treeList = [] } = useTreeNodeData(nodeId) || {};
   const treeDataDispatch = useTreeDataDispatch();
+
+  const validateResult = useValidatorResult(nodeId) || {};
   const validateResultDispatch = useValidatorResultDispatch();
+
+  console.log('validateResult', validateResult);
 
   const onValueChange = (componentId, value, oldValue) => {
     // 更新数据
@@ -72,6 +84,13 @@ function TreeNode({ id: nodeId }) {
         rules: getValidateRules({ nodeData: data }),
         callback: (errors) => {
           console.log(errors);
+          validateResultDispatch({
+            type: ENUM_TREE_DATA_VALIDATE_ACTION.SET_COMPONENT_VALIDATE_RESULT,
+            payload: {
+              nodeId,
+              errors,
+            },
+          });
         },
       },
     });
@@ -79,7 +98,7 @@ function TreeNode({ id: nodeId }) {
 
   return (
     <div className={[`${NAMESPACE}__tree-node`]}>
-      {renderTreeNode(data, onValueChange)}
+      {renderTreeNode({ data, validateResult, onValueChange })}
       {renderTree(treeList)}
     </div>
   );

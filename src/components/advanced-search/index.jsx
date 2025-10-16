@@ -2,6 +2,11 @@
 import { forwardRef, useImperativeHandle, useReducer, useRef } from 'react';
 import { treeDataReducer } from './action/tree-data-reducer';
 import { TreeDataContext, TreeDataDispatchContext } from './context/tree-data';
+import {
+  ValidatorResultContext,
+  ValidatorResultDispatchContext,
+} from './context/validator';
+import { validateResultReducer } from './action/validator-reducer';
 
 // 组件
 import Tree from './tree/index';
@@ -17,11 +22,23 @@ import './index.scss';
  * @param {*} param0
  * @returns
  */
-function AdvancedSearchContext({ treeData, dispatch, children }) {
+function AdvancedSearchContext({
+  treeData,
+  treeDataDispatch,
+  validateResult,
+  validateResultDispatch,
+  children,
+}) {
   return (
     <TreeDataContext.Provider value={treeData}>
-      <TreeDataDispatchContext.Provider value={dispatch}>
-        {children}
+      <TreeDataDispatchContext.Provider value={treeDataDispatch}>
+        <ValidatorResultContext.Provider value={validateResult}>
+          <ValidatorResultDispatchContext.Provider
+            value={validateResultDispatch}
+          >
+            {children}
+          </ValidatorResultDispatchContext.Provider>
+        </ValidatorResultContext.Provider>
       </TreeDataDispatchContext.Provider>
     </TreeDataContext.Provider>
   );
@@ -35,12 +52,16 @@ function AdvancedSearchContext({ treeData, dispatch, children }) {
  */
 function AdvancedSearch(props, ref) {
   const domRef = useRef(null);
-  const [treeData, dispatch] = useReducer(treeDataReducer, {});
+  const [treeData, treeDataDispatch] = useReducer(treeDataReducer, {});
+  const [validateResult, validateResultDispatch] = useReducer(
+    validateResultReducer,
+    {}
+  );
 
   useImperativeHandle(ref, () => ({
     el: domRef.current,
     setData: (data) => {
-      dispatch({
+      treeDataDispatch({
         type: ENUM_TREE_DATA_OPERATION.SET_TREE_DATA,
         payload: data,
       });
@@ -49,7 +70,12 @@ function AdvancedSearch(props, ref) {
 
   return (
     <div ref={domRef} className="advanced-search">
-      <AdvancedSearchContext treeData={treeData} dispatch={dispatch}>
+      <AdvancedSearchContext
+        treeData={treeData}
+        treeDataDispatch={treeDataDispatch}
+        validateResult={validateResult}
+        validateResultDispatch={validateResultDispatch}
+      >
         <label>Advance Search</label>
         {treeData && <Tree id={ID_ROOT} />}
       </AdvancedSearchContext>

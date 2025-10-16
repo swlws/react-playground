@@ -1,10 +1,15 @@
 import { memo } from 'react';
 import Tree from '../tree/index';
 
-import { ENUM_TREE_DATA_OPERATION, NAMESPACE } from '../constant';
+import {
+  ENUM_TREE_DATA_OPERATION,
+  ENUM_TREE_DATA_VALIDATE_ACTION,
+  NAMESPACE,
+} from '../constant';
 import FormComponent from './form-component';
 import { useTreeDataDispatch, useTreeNodeData } from '../context/tree-data';
 import { useForceRender } from '../hooks';
+import { useValidatorResultDispatch } from '../context/validator';
 
 // 渲染行
 function renderTreeNode(data, onValueChange) {
@@ -17,8 +22,8 @@ function renderTreeNode(data, onValueChange) {
             key={id}
             componentType={componentType}
             value={value}
-            onChange={(value) => {
-              onValueChange(item.id, value);
+            onChange={(newValue) => {
+              onValueChange(item.id, newValue, value);
             }}
           />
         );
@@ -44,13 +49,20 @@ function TreeNode({ id: nodeId }) {
 
   const { data = [], treeList = [] } = useTreeNodeData(nodeId) || {};
   const treeDataDispatch = useTreeDataDispatch();
+  const validateResultDispatch = useValidatorResultDispatch();
 
-  const onValueChange = (componentId, value) => {
+  const onValueChange = (componentId, value, oldValue) => {
     treeDataDispatch({
       type: ENUM_TREE_DATA_OPERATION.UPDATE_TARGET_COMPONENT_VALUE,
-      payload: { nodeId, componentId, value },
+      payload: { nodeId, componentId, value, oldValue },
     });
+
     forceRender();
+
+    validateResultDispatch({
+      type: ENUM_TREE_DATA_VALIDATE_ACTION.COMPONENT_VALUE_CHANGE,
+      payload: { nodeId, componentId, value, oldValue },
+    });
   };
 
   return (

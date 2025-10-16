@@ -21,3 +21,17 @@ export const ENUM_TREE_DATA_OPERATION = {
   /** 更新树形节点的状态 */
   UPDATE_TREE_NODE_STATE: 'update_tree_node_state',
 };
+
+/** 校验组件相关操作 */
+export const ENUM_TREE_DATA_VALIDATE_ACTION = {
+  /** 组件值改变 */
+  COMPONENT_VALUE_CHANGE: 'component_value_change',
+};
+
+/** 校验状态 */
+export const ENUM_VALIDATE_STATE = {
+  /** 成功 */
+  SUCCESS: 'success',
+  /** 错误 */
+  ERROR: 'error',
+};

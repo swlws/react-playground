@@ -13,10 +13,13 @@ export function validateResultReducer(state, action) {
   console.log('validateResultReducer', state, action);
   switch (action.type) {
     case ENUM_TREE_DATA_VALIDATE_ACTION.COMPONENT_VALUE_CHANGE:
-      return validateWhenComponentValueChange({
-        validateResult: state,
-        ...action.payload,
-      });
+      return Object.assign(
+        state,
+        validateWhenComponentValueChange({
+          validateResult: state,
+          ...action.payload,
+        })
+      );
     default:
       return state;
   }

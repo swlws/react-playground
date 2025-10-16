@@ -1,8 +1,8 @@
-import { ENUM_TREE_DATA_VALIDATE_ACTION } from '../constant';
+import { ENUM_TREE_DATA_VALIDATE_ACTION } from "../constant";
 import {
   setComponentValidateResult,
   validateWhenComponentValueChange,
-} from './validator/index.js';
+} from "./validator/index.js";
 
 /**
  * 树形数据 reducer
@@ -13,7 +13,7 @@ import {
  * @returns
  */
 export function validateResultReducer(state, action) {
-  console.log('validateResultReducer', state, action);
+  console.log("validateResultReducer", state, action);
   switch (action.type) {
     case ENUM_TREE_DATA_VALIDATE_ACTION.EMIT_VALIDATE_COMPONENT_VALUE:
       validateWhenComponentValueChange({
@@ -22,10 +22,13 @@ export function validateResultReducer(state, action) {
       });
       return state;
     case ENUM_TREE_DATA_VALIDATE_ACTION.SET_COMPONENT_VALIDATE_RESULT: {
-      return setComponentValidateResult({
-        validateResult: state,
-        ...action.payload,
-      });
+      return Object.assign(
+        state,
+        setComponentValidateResult({
+          validateResult: state,
+          ...action.payload,
+        })
+      );
     }
     default:
       return state;

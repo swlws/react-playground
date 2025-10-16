@@ -81,6 +81,7 @@ TreeChildren.displayName = "TreeChildren";
  * @returns {React.ReactElement} 树节点组件
  */
 function TreeNode({ id: nodeId }) {
+  console.log("TreeNode Render ID: ", nodeId);
   const forceRender = useForceRender();
 
   const { data = [], treeList = [] } = useTreeNodeData(nodeId) || {};

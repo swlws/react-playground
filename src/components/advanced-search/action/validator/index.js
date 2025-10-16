@@ -1,6 +1,5 @@
 import { produce } from 'immer';
-import { ENUM_VALIDATE_STATE } from '../../constant';
-
+import { validateRulesWithData } from './validator-tool';
 import { ensureComponentState } from './helper';
 
 /**
@@ -9,16 +8,26 @@ import { ensureComponentState } from './helper';
  * @returns
  */
 export function validateWhenComponentValueChange({
+  formData,
+  rules,
+  callback,
+}) {
+  validateRulesWithData({
+    formData,
+    rules,
+    callback,
+  });
+}
+
+export function setComponentValidateResult({
   validateResult,
   nodeId,
   componentId,
+  result,
 }) {
   return produce(validateResult, (draft) => {
     const componentState = ensureComponentState(draft, nodeId, componentId);
 
-    componentState.value = {
-      state: ENUM_VALIDATE_STATE.SUCCESS,
-      message: '',
-    };
+    componentState.value = result;
   });
 }

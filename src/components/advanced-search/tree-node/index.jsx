@@ -10,6 +10,7 @@ import FormComponent from './form-component';
 import { useTreeDataDispatch, useTreeNodeData } from '../context/tree-data';
 import { useForceRender } from '../hooks';
 import { useValidatorResultDispatch } from '../context/validator';
+import { getFormData, getValidateRules } from './helper';
 
 // 渲染行
 function renderTreeNode(data, onValueChange) {
@@ -52,16 +53,27 @@ function TreeNode({ id: nodeId }) {
   const validateResultDispatch = useValidatorResultDispatch();
 
   const onValueChange = (componentId, value, oldValue) => {
+    // 更新数据
     treeDataDispatch({
       type: ENUM_TREE_DATA_OPERATION.UPDATE_TARGET_COMPONENT_VALUE,
       payload: { nodeId, componentId, value, oldValue },
     });
 
+    // 更新 UI
     forceRender();
 
+    // 校验
     validateResultDispatch({
-      type: ENUM_TREE_DATA_VALIDATE_ACTION.COMPONENT_VALUE_CHANGE,
-      payload: { nodeId, componentId, value, oldValue },
+      type: ENUM_TREE_DATA_VALIDATE_ACTION.EMIT_VALIDATE_COMPONENT_VALUE,
+      payload: {
+        formData: Object.assign(getFormData({ nodeData: data }), {
+          [componentId]: value,
+        }),
+        rules: getValidateRules({ nodeData: data }),
+        callback: (errors) => {
+          console.log(errors);
+        },
+      },
     });
   };
 

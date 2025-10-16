@@ -12,14 +12,12 @@ import { validateWhenComponentValueChange } from './validator/index.js';
 export function validateResultReducer(state, action) {
   console.log('validateResultReducer', state, action);
   switch (action.type) {
-    case ENUM_TREE_DATA_VALIDATE_ACTION.COMPONENT_VALUE_CHANGE:
-      return Object.assign(
-        state,
-        validateWhenComponentValueChange({
-          validateResult: state,
-          ...action.payload,
-        })
-      );
+    case ENUM_TREE_DATA_VALIDATE_ACTION.EMIT_VALIDATE_COMPONENT_VALUE:
+      validateWhenComponentValueChange({
+        validateResult: state,
+        ...action.payload,
+      });
+      return state;
     default:
       return state;
   }

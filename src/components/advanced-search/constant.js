@@ -24,8 +24,9 @@ export const ENUM_TREE_DATA_OPERATION = {
 
 /** 校验组件相关操作 */
 export const ENUM_TREE_DATA_VALIDATE_ACTION = {
-  /** 组件值改变 */
-  COMPONENT_VALUE_CHANGE: 'component_value_change',
+  EMIT_VALIDATE_COMPONENT_VALUE: 'emit_validate_component_value',
+  SET_COMPONENT_VALIDATE_RESULT: 'set_component_validate_result',
+  CLEAR_COMPONENT_VALIDATE_RESULT: 'clear_component_validate_result',
 };
 
 /** 校验状态 */

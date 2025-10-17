@@ -1,4 +1,4 @@
-import { ENUM_TREE_DATA_VALIDATE_ACTION } from "../constant";
+import { ENUM_TREE_DATA_VALIDATE_ACTION } from "@as/constant";
 import {
   setComponentValidateResult,
   validateWhenComponentValueChange,

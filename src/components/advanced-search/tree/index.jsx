@@ -1,8 +1,10 @@
+// 方法
 import { memo, useCallback, useMemo } from "react";
-import TreeNode from "../tree-node/index";
+import { NAMESPACE } from "@as/constant";
+import { useTreeNodeData } from "@as/context/tree-data";
 
-import { NAMESPACE } from "../constant";
-import { useTreeNodeData } from "../context/tree-data";
+// 组件
+import TreeNode from "@as/tree-node/index";
 
 /**
  * Tree组件 - 渲染树形结构

@@ -1,4 +1,4 @@
-import { ENUM_TREE_DATA_OPERATION } from "../constant";
+import { ENUM_TREE_DATA_OPERATION } from "@as/constant";
 import { updateTargetComponentValueWithImmer } from "./tree-data/index.js";
 
 /**

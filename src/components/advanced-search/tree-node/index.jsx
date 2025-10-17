@@ -1,20 +1,21 @@
+// 方法
 import { memo, useCallback, useMemo } from "react";
-import Tree from "../tree/index";
-
 import {
   ENUM_TREE_DATA_OPERATION,
   ENUM_TREE_DATA_VALIDATE_ACTION,
-  ENUM_VALIDATE_STATE,
   NAMESPACE,
-} from "../constant";
-import FormComponent from "./form-component";
-import { useTreeDataDispatch, useTreeNodeData } from "../context/tree-data";
-import { useForceRender } from "../hooks";
+} from "@as/constant";
+import { useTreeDataDispatch, useTreeNodeData } from "@as/context/tree-data";
+import { useForceRender } from "@as/hooks";
 import {
   useValidatorResult,
   useValidatorResultDispatch,
-} from "../context/validator";
+} from "@as/context/validator";
 import { getFormData, getValidateRules } from "./helper";
+
+// 组件
+import Tree from "@as/tree/index";
+import FormComponent from "./form-component";
 
 /**
  * 渲染表单行组件

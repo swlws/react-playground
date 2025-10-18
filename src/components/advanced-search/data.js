@@ -5,20 +5,39 @@ export const defaultRow = [
   { id: 'left@leftBracket', componentType: 'leftBracket', value: ['('] },
   { id: 'name@input', componentType: 'input', value: [''] },
   { id: 'right@rightBracket', componentType: 'rightBracket', value: [')'] },
+  {
+    id: 'inner@tree',
+    componentType: 'tree',
+    defaultRow: [
+      { id: 'name@input@inner@tree', componentType: 'input', value: [''] },
+    ],
+  },
 ];
 
 export const schema = {
   'left@leftBracket': {
     componentType: 'leftBracket',
     value: ['('],
+    className: 'left-bracket',
+    style: 'border-color: red',
+    version: '1.0.0',
+    attrs: {},
   },
   'name@input': {
     componentType: 'input',
     value: [''],
+    className: 'name-input',
+    style: 'border-color: red',
+    version: '1.0.0',
+    attrs: {},
   },
   'right@rightBracket': {
     componentType: 'rightBracket',
     value: [')'],
+    className: 'right-bracket',
+    style: 'border-color: red',
+    version: '1.0.0',
+    attrs: {},
   },
 };
 

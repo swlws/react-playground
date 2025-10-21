@@ -1,42 +1,56 @@
 import { Graph } from "@antv/g6";
 import { useCallback, useEffect, useRef } from "react";
 
-let num = 0;
 export default function G6Demo() {
   const containerRef = useRef(null);
   const graphRef = useRef(null);
+  const numRef = useRef(0);
 
+  // 🔹 切换 combo1 的折叠/展开状态
   const toggleCombo1 = useCallback(() => {
-    console.log(num, num % 2);
-    if (num % 2 === 0) {
-      graphRef.current.collapseElement("combo1");
+    const graph = graphRef.current;
+    if (!graph) return;
+
+    const comboId = "combo1";
+    const combo = graph.getComboData(comboId);
+
+    // 🔸 检查当前状态（G6 v5 会自动记录 collapsed 状态）
+    const isCollapsed = combo?.collapsed;
+
+    if (isCollapsed) {
+      graph.expandElement(comboId);
     } else {
-      graphRef.current.expandElement("combo1");
+      graph.collapseElement(comboId);
     }
-    num++;
+    numRef.current++;
   }, []);
 
   useEffect(() => {
-    graphRef.current = new Graph({
+    const graph = new Graph({
       container: containerRef.current,
       devicePixelRatio: window.devicePixelRatio,
       data: {
         nodes: Array.from({ length: 10 }).map((_, i) => ({
           id: `id-${i}`,
+          combo: "combo1", // 🔹 把几个节点放进 combo1
           data: { category: i === 0 ? "central" : "around" },
-          combo: i === 6 ? "combo1" : null,
         })),
         edges: Array.from({ length: 9 }).map((_, i) => ({
           source: `id-0`,
           target: `id-${i + 1}`,
         })),
-        combos: [{ id: "combo1" }],
+        combos: [
+          {
+            id: "combo1",
+            label: "组合1",
+          },
+        ],
       },
       node: {
         type: (datum) => (datum.id === "id-0" ? "circle" : "rect"),
         style: {
-          size: (datum) => (datum.id === "id-1" ? 20 : [20, 20]),
-          labelText: (d) => d.id, // ✅ label 内容
+          size: 20,
+          labelText: (d) => d.id,
           labelFill: "#333",
           labelFontSize: 10,
           labelPosition: "bottom",
@@ -52,49 +66,44 @@ export default function G6Demo() {
         },
       },
       combo: {
-        type: "rect", // Combo 外形
+        type: "rect",
         style: {
           fill: "#f0f7ff",
           stroke: "#5B8FF9",
+          radius: 8,
         },
         labelText: (d) => d.label,
         labelFill: "#333",
       },
       layout: {
         type: "d3-force",
-        // 斥力强度（负数为排斥）
         manyBody: { strength: -200 },
-        // ✅ 添加碰撞检测，避免节点重叠
-        collision: { radius: 60 }, // radius 建议略大于节点半径
+        collision: { radius: 60 },
       },
-
       behaviors: [
         "drag-canvas",
         "zoom-canvas",
         "drag-element",
         {
           type: "collapse-expand-combo",
-          trigger: "dblclick", // 默认是单击 click，可改为双击
-          animate: true, // 折叠/展开时是否动画过渡
+          trigger: "dblclick", // ✅ 支持双击折叠
+          animate: true,
         },
       ],
       plugins: [
         { type: "grid-line", follow: true },
-        {
-          type: "minimap",
-          size: [100, 100],
-        },
-        "contextmenu",
+        { type: "minimap", size: [120, 100] },
       ],
     });
 
-    graphRef.current.render();
-    window.__graphRef = graphRef.current;
+    graph.render();
+    graphRef.current = graph;
+    window.__graphRef = graph;
   }, []);
 
   return (
     <section className="demo-g6">
-      <button onClick={toggleCombo1}>切换折叠</button>
+      <button onClick={toggleCombo1}>切换 Combo1 折叠状态</button>
       <div ref={containerRef} style={{ width: "100%", height: "500px" }} />
     </section>
   );

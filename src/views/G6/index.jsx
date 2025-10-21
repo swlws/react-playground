@@ -15,7 +15,8 @@ export default function G6Demo() {
     const combo = graph.getComboData(comboId);
 
     // 🔸 检查当前状态（G6 v5 会自动记录 collapsed 状态）
-    const isCollapsed = combo?.collapsed;
+    const isCollapsed = combo?.style.collapsed;
+    console.log("isCollapsed", isCollapsed);
 
     if (isCollapsed) {
       graph.expandElement(comboId);
@@ -86,8 +87,8 @@ export default function G6Demo() {
         "drag-element",
         {
           type: "collapse-expand-combo",
-          trigger: "dblclick", // ✅ 支持双击折叠
-          animate: true,
+          // trigger: "dblclick", // ✅ 支持双击折叠
+          // animate: true,
         },
       ],
       plugins: [

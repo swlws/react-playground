@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { rsaEncrypt, rsaDecrypt } from './browser-crypto';
+import { rsaEncrypt, rsaDecrypt } from './web-crypto';
 
 import './index.scss';
 
@@ -31,16 +31,19 @@ export default function Crypto() {
     <section className="web-crypto">
       <h1>Crypto</h1>
 
-      <div>
+      <div className="input">
         <textarea type="text" value={text} onChange={handleChange} />
-        <button onClick={handleEncrypt}>加密</button>
-        <button onClick={handleDecrypt}>解密</button>
       </div>
 
-      <div>
-        <div>输出：</div>
+      <div className="button-group">
+        <button onClick={handleEncrypt}>加密</button>
+        <button onClick={handleDecrypt}>解密</button>
 
-        <textarea className="output" defaultValue={output}></textarea>
+        <span>输出：</span>
+      </div>
+
+      <div className="output">
+        <pre>{output}</pre>
       </div>
     </section>
   );

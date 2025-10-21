@@ -30,6 +30,7 @@ function App() {
         <div>{userLoading ? '...' : userInfo.name}</div>
         <Link to="/">Home</Link>
         <Link to="/demo">Demo</Link>
+        <Link to="/crypto">Crypto</Link>
       </nav>
 
       <main className="app-content">

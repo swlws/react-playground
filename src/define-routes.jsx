@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 
 const Home = React.lazy(() => import("./views/home/index"));
 const Demo = React.lazy(() => import("./views/demo/index"));
+const G6 = React.lazy(() => import("./views/G6/index"));
 
 export default function DefineRoutes() {
   return (
@@ -13,6 +14,7 @@ export default function DefineRoutes() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/demo" element={<Demo />} />
+        <Route path="/g6" element={<G6 />} />
       </Routes>
     </Suspense>
   );

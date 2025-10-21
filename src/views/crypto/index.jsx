@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { rsaEncrypt, rsaDecrypt } from './web-crypto';
+import { rsaEncrypt, rsaDecrypt } from './rsa-crypto';
 
 import './index.scss';
 

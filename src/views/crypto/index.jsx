@@ -1,5 +1,5 @@
-import { useCallback, useState } from 'react';
-import { rsaEncrypt, rsaDecrypt } from './rsa-crypto';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { rsaEncrypt, rsaDecrypt } from './web-crypto';
 
 import './index.scss';
 
@@ -10,22 +10,33 @@ export default function Crypto() {
   const [text, setText] = useState('123');
   const [output, setOutput] = useState('');
 
+  // 文本变更处理函数，无需依赖项
   const handleChange = useCallback((e) => {
     const value = e.target.value;
     setText(value);
   }, []);
 
-  const handleEncrypt = useCallback(async () => {
-    const encrypted = await rsaEncrypt(publicKey, text);
-    console.log('加密结果：', encrypted);
-    setOutput(encrypted);
+  // 使用ref存储最新的text值，避免依赖项
+  const textRef = useRef(text);
+
+  // 当text变化时更新ref
+  useEffect(() => {
+    textRef.current = text;
   }, [text]);
 
+  // 使用ref获取最新值，避免依赖text
+  const handleEncrypt = useCallback(async () => {
+    const encrypted = await rsaEncrypt(publicKey, textRef.current);
+    console.log('加密结果：', encrypted);
+    setOutput(encrypted);
+  }, []); // 无需依赖text
+
+  // 使用ref获取最新值，避免依赖text
   const handleDecrypt = useCallback(async () => {
-    const decrypted = await rsaDecrypt(privateKey, text);
+    const decrypted = await rsaDecrypt(privateKey, textRef.current);
     console.log('解密结果：', decrypted);
     setOutput(decrypted);
-  }, [text]);
+  }, []); // 无需依赖text
 
   return (
     <section className="web-crypto">

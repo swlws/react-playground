@@ -32,6 +32,7 @@ function App() {
         <Link to="/g6">G6</Link>
         <Link to="/demo">Demo</Link>
         <Link to="/crypto">Crypto</Link>
+        <Link to="/form-engine">Form</Link>
       </nav>
 
       <main className="app-content">

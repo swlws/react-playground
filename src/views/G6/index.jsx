@@ -2,6 +2,7 @@ import { Graph } from '@antv/g6';
 import { useCallback, useEffect, useRef } from 'react';
 import { getOption } from './config';
 import { toggleAllCombos } from './action/combo';
+import { addNode } from './action/node';
 
 export default function G6Demo() {
   const containerRef = useRef(null);
@@ -9,6 +10,10 @@ export default function G6Demo() {
 
   const toggleComboState = useCallback(() => {
     toggleAllCombos({ graph: graphRef.current });
+  }, []);
+
+  const addOneNode = useCallback(() => {
+    addNode({ graph: graphRef.current });
   }, []);
 
   useEffect(() => {
@@ -23,6 +28,7 @@ export default function G6Demo() {
   return (
     <section className="demo-g6">
       <button onClick={toggleComboState}>切换所有 Combo 折叠状态</button>
+      <button onClick={addOneNode}>添加一个节点</button>
       <div ref={containerRef} style={{ width: '100%', height: '500px' }} />
     </section>
   );

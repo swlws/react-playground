@@ -3,7 +3,10 @@ export function getNode() {
     type: (datum) => (datum.id === 'id-0' ? 'circle' : 'rect'),
     style: {
       size: 20,
-      labelText: (d) => d.id,
+      labelText: (data) => {
+        // data 为 Node 节点完整数据
+        return data.id;
+      },
       labelFill: '#333',
       labelFontSize: 10,
       labelPosition: 'bottom',

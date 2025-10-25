@@ -3,10 +3,7 @@ import { getNodeStyle } from './style';
 
 export function getNode() {
   return {
-    type: (data) => {
-      console.log('data', data);
-      return data.id === 'id-0' ? 'circle' : 'rect';
-    },
+    type: (data) => data.type,
     style: getNodeStyle(),
     state: getNodeState(),
     palette: {

@@ -7,6 +7,8 @@ import { getNode } from './core/node';
 import { getPlugins } from './core/plugins';
 import { getData } from './data';
 
+import './register/index';
+
 export function getOption({ container }) {
   return {
     container,
@@ -15,7 +17,7 @@ export function getOption({ container }) {
     node: getNode(),
     edge: getEdge(),
     combo: getCombo(),
-    layout: getLayout({ type: ENUM_LAYOUT_TYPE.DENDROGRAM }),
+    layout: getLayout({ type: ENUM_LAYOUT_TYPE.ANTV_DAGRE }),
     behaviors: getBehavior(),
     plugins: getPlugins(),
   };

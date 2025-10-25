@@ -14,5 +14,5 @@ export function addNode({ graph }) {
   graph.addNodeData([node]);
   graph.addEdgeData([edge]);
 
-  graph.layout({});
+  graph.layout();
 }

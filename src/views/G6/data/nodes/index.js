@@ -1,3 +1,4 @@
+import { ENUM_STATE_TYPE } from '../../core/node/state';
 import { DEFAULT_COMBO_ID, DEFAULT_NODE_SIZE } from '../constants';
 
 export function getInitNodes() {
@@ -6,7 +7,7 @@ export function getInitNodes() {
     combo: DEFAULT_COMBO_ID,
     data: { category: i === 0 ? 'central' : 'around' },
     style: {},
-    states: ['hover'],
+    states: [ENUM_STATE_TYPE.HIGHLIGHT],
   }));
 }
 
@@ -15,6 +16,6 @@ export function createOneNode({ id }) {
     id,
     data: {},
     style: {},
-    states: ['hover'],
+    states: [ENUM_STATE_TYPE.HIGHLIGHT],
   };
 }

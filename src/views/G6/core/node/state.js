@@ -1,10 +1,8 @@
-export const ENUM_STATE_TYPE = {
-  HIGHLIGHT: 'highlight',
-};
+import { ENUM_NODE_STATE_TYPE } from '../constants';
 
 export function getNodeState() {
   return {
-    [ENUM_STATE_TYPE.HIGHLIGHT]: {
+    [ENUM_NODE_STATE_TYPE.HIGHLIGHT]: {
       stroke: 'red',
       lineWidth: 2,
     },

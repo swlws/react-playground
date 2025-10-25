@@ -1,9 +1,7 @@
 import { Graph } from '@antv/g6';
 import { useCallback, useEffect, useRef } from 'react';
 import { getOption } from './config';
-import { toggleAllCombos } from './action/combo';
-import { addOneNode } from './action/node';
-import { addOneEdge } from './action/edge';
+import { toggleAllCombos, addNodeEdge } from './action/index';
 
 export default function G6Demo() {
   const containerRef = useRef(null);
@@ -14,9 +12,7 @@ export default function G6Demo() {
   }, []);
 
   const handleAddOneNode = useCallback(() => {
-    const node = addOneNode({ graph: graphRef.current });
-    addOneEdge({ graph: graphRef.current, source: 'id-1', target: node.id });
-    graphRef.current.layout();
+    addNodeEdge({ graph: graphRef.current });
   }, []);
 
   useEffect(() => {

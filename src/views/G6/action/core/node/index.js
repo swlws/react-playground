@@ -1,4 +1,4 @@
-import { createOneNode } from '../../data/nodes';
+import { createOneNode } from '../../../data/nodes';
 
 function getNodeSize(graph) {
   return graph.getNodeData().length;

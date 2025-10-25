@@ -2,6 +2,15 @@ import { Rect } from '@antv/g6';
 
 // 创建自定义节点，继承自 Rect
 export default class DualLabelNode extends Rect {
+  // 便捷的数据获取方法
+  get nodeData() {
+    return this.context.graph.getNodeData(this.id);
+  }
+
+  get data() {
+    return this.nodeData.data || {};
+  }
+
   // 副标题样式
   getSubtitleStyle(attributes) {
     return {

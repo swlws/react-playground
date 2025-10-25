@@ -34,4 +34,5 @@ export const ENUM_NODE_SHAPE_TYPE = {
   TRIANGLE: 'triangle',
   STAR: 'star',
   DUAL_LABEL_NODE: 'dual-label-node',
+  USER_CARD_NODE: 'user-card-node',
 };

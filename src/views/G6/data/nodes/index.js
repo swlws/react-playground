@@ -35,3 +35,30 @@ export function createOneNode({ id, combo = null }) {
     states: [ENUM_NODE_STATE_TYPE.HIGHLIGHT],
   };
 }
+
+export function createOneDualLabelNode({ id, combo = null }) {
+  return {
+    id,
+    type: ENUM_NODE_SHAPE_TYPE.DUAL_LABEL_NODE,
+    data: { title: `title-${id}`, subtitle: `subtitle-${id}` },
+    combo,
+    style: {},
+    states: [ENUM_NODE_STATE_TYPE.HIGHLIGHT],
+  };
+}
+
+export function createOneUserCardNode({ id, combo = null }) {
+  return {
+    id,
+    type: ENUM_NODE_SHAPE_TYPE.USER_CARD_NODE,
+    data: {
+      name: '张小明',
+      role: '前端工程师',
+      status: 'online',
+      avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang',
+    },
+    combo,
+    style: { x: 100, y: 100 },
+    states: [ENUM_NODE_STATE_TYPE.HIGHLIGHT],
+  };
+}

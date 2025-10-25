@@ -5,6 +5,7 @@ export function getNodeState() {
     [ENUM_NODE_STATE_TYPE.HIGHLIGHT]: {
       stroke: 'red',
       lineWidth: 2,
+      fill: '#fff',
     },
   };
 }

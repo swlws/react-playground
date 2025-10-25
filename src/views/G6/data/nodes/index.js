@@ -28,8 +28,8 @@ export function getInitNodes() {
 export function createOneNode({ id, combo = null }) {
   return {
     id,
-    type: ENUM_NODE_SHAPE_TYPE.DUAL_LABEL_NODE,
-    data: { title: `title-${id}`, subtitle: `subtitle-${id}` },
+    type: ENUM_NODE_SHAPE_TYPE.RECT,
+    data: {},
     combo,
     style: {},
     states: [ENUM_NODE_STATE_TYPE.HIGHLIGHT],
@@ -58,7 +58,7 @@ export function createOneUserCardNode({ id, combo = null }) {
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Zhang',
     },
     combo,
-    style: { x: 100, y: 100 },
+    style: {},
     states: [ENUM_NODE_STATE_TYPE.HIGHLIGHT],
   };
 }

@@ -9,3 +9,12 @@ export function getInitNodes() {
     states: ['hover'],
   }));
 }
+
+export function createOneNode({ id }) {
+  return {
+    id,
+    data: {},
+    style: {},
+    states: ['hover'],
+  };
+}

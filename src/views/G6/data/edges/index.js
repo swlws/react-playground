@@ -6,3 +6,10 @@ export function getInitEdges() {
     target: `id-${i + 1}`,
   }));
 }
+
+export function createOneEdge({ source, target }) {
+  return {
+    source,
+    target,
+  };
+}

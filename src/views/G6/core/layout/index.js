@@ -2,6 +2,7 @@ export const ENUM_LAYOUT_TYPE = {
   DEFAULT: 'DEFAULT',
   FLOW: 'FLOW',
   ANTV_DAGRE: 'antv-dagre',
+  DENDROGRAM: 'dendrogram',
 };
 
 const LAYOUT_MAP = {
@@ -21,6 +22,12 @@ const LAYOUT_MAP = {
     rankdir: 'TB',
     align: 'UL',
     nodesep: 50,
+  },
+  [ENUM_LAYOUT_TYPE.DENDROGRAM]: {
+    type: 'dendrogram', // 或 'compactBox', 'mindmap' 等树布局
+    direction: 'TB', // 从上到下布局
+    nodeSep: 50, // 节点间距
+    rankSep: 100, // 层级间距
   },
 };
 

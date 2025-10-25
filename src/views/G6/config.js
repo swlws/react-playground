@@ -1,5 +1,6 @@
+import { ENUM_LAYOUT_TYPE } from './core/constants';
 import { getBehavior } from './core/behaviors';
-import { ENUM_LAYOUT_TYPE, getLayout } from './core/layout';
+import { getLayout } from './core/layout';
 import { getCombo } from './core/combo';
 import { getEdge } from './core/edge';
 import { getNode } from './core/node';
@@ -14,7 +15,7 @@ export function getOption({ container }) {
     node: getNode(),
     edge: getEdge(),
     combo: getCombo(),
-    layout: getLayout({ type: ENUM_LAYOUT_TYPE.DENDROGRAM }),
+    layout: getLayout({ type: ENUM_LAYOUT_TYPE.ANTV_DAGRE }),
     behaviors: getBehavior(),
     plugins: getPlugins(),
   };

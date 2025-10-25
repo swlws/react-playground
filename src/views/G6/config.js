@@ -15,7 +15,7 @@ export function getOption({ container }) {
     node: getNode(),
     edge: getEdge(),
     combo: getCombo(),
-    layout: getLayout({ type: ENUM_LAYOUT_TYPE.ANTV_DAGRE }),
+    layout: getLayout({ type: ENUM_LAYOUT_TYPE.DENDROGRAM }),
     behaviors: getBehavior(),
     plugins: getPlugins(),
   };

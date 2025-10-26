@@ -13,7 +13,7 @@ export default function FormEditor() {
     <FormEditorContextProvider>
       <article className="form-editor">
         <header className="form-editor__header">
-          <Title title="表单编辑器" />
+          <Title title="Editor" />
         </header>
 
         <section className="form-editor__left-section">

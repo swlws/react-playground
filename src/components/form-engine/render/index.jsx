@@ -17,7 +17,7 @@ export default function FormRenderer({ mode = ENUM_FORM_MODE.EDIT } = {}) {
           componentId={component.id}
           mode={mode}
         >
-          <DyncComponent componentId={component.id} />
+          <DyncComponent mode={mode} componentId={component.id} />
         </ComponentWrap>
       ))}
     </div>

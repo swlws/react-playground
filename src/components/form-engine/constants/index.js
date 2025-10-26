@@ -7,6 +7,11 @@ export const ENUM_FORM_MODE = {
 };
 
 /**
+ * 数据传输键
+ */
+export const KEY_DATA_TRANSFER = "application/json";
+
+/**
  * 物料类型枚举
  */
 export const ENUM_MATERIAL_CATEGORY = {

@@ -3,12 +3,22 @@ import { useState } from "react";
 // 组件
 import FormRenderer from "@fe/render";
 
+// 方法
+import { useComponentTreeDispatch } from "@/components/form-engine/context/component-tree";
+import { useComponentStateDispatch } from "@/components/form-engine/context/component-state";
+
 // 变量
-import { ENUM_FORM_MODE } from "@/components/form-engine/constants";
+import { ENUM_FORM_MODE, KEY_DATA_TRANSFER } from "@fe/constants";
+import {
+  ENUM_COMPONENT_STATE_ACTION_TYPE,
+  ENUM_COMPONENT_TREE_ACTION_TYPE,
+} from "@/components/form-engine/action/constants";
 
 export default function DrawBoard() {
   const [isDragging, setIsDragging] = useState(false);
-  const [componentSchemaList, setComponentSchemaList] = useState([]);
+
+  const componentStateDispatch = useComponentStateDispatch();
+  const componentTreeDispatch = useComponentTreeDispatch();
 
   const handleDragOver = (e) => {
     e.preventDefault();
@@ -27,7 +37,7 @@ export default function DrawBoard() {
     try {
       // 获取拖拽的物料数据
       const materialData = JSON.parse(
-        e.dataTransfer.getData("application/json")
+        e.dataTransfer.getData(KEY_DATA_TRANSFER)
       );
 
       if (materialData) {
@@ -36,15 +46,25 @@ export default function DrawBoard() {
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
 
-        // 添加新组件到画板
-        setComponentSchemaList((prev) => [
-          ...prev,
-          {
-            ...materialData,
-            componentId: `${materialData.id}__${crypto.randomUUID()}`,
-            position: { x, y },
+        const { componentName } = materialData;
+        const componentId = `${componentName}__${crypto.randomUUID()}`;
+        // 触发组件状态更新
+        componentStateDispatch({
+          type: ENUM_COMPONENT_STATE_ACTION_TYPE.SET_STYLE,
+          payload: {
+            componentId,
+            style: { position: "absolute", top: y, left: x },
           },
-        ]);
+        });
+
+        componentTreeDispatch({
+          type: ENUM_COMPONENT_TREE_ACTION_TYPE.ADD_COMPONENT,
+          payload: {
+            componentId,
+            componentName,
+            parentId: null,
+          },
+        });
       }
     } catch (error) {
       console.error("拖拽数据解析失败:", error);
@@ -58,18 +78,9 @@ export default function DrawBoard() {
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
     >
-      {componentSchemaList.length === 0 ? (
-        <div className="form-editor__draw-board-placeholder">
-          <h2>将物料拖拽到此处</h2>
-        </div>
-      ) : (
-        <div className="form-editor__draw-board-content">
-          <FormRenderer
-            componentSchemaList={componentSchemaList}
-            mode={ENUM_FORM_MODE.EDIT}
-          />
-        </div>
-      )}
+      <div className="form-editor__draw-board-content">
+        <FormRenderer mode={ENUM_FORM_MODE.EDIT} />
+      </div>
     </div>
   );
 }

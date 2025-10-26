@@ -6,6 +6,7 @@ import {
 
 export default {
   id: "fe-select",
+  componentName: "fe-select",
   /** 输入框物料 */
   category: ENUM_MATERIAL_CATEGORY.FORM_ELEMENT,
   name: "选择框",

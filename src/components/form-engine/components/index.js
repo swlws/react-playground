@@ -43,6 +43,6 @@ export const materialList = makeMaterial(schemaList);
 
 // UI 映射
 export const schemaMapUI = {
-  [InputSchema.id]: InputUI,
-  [SelectSchema.id]: SelectUI,
+  [InputSchema.componentName]: InputUI,
+  [SelectSchema.componentName]: SelectUI,
 };

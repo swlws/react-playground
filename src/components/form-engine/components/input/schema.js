@@ -5,7 +5,7 @@ import {
 } from "@fe/constants";
 
 export default {
-  id: "fe-input",
+  componentName: "fe-input",
   /** 输入框物料 */
   category: ENUM_MATERIAL_CATEGORY.FORM_ELEMENT,
   name: "输入框",

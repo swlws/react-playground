@@ -1,7 +1,10 @@
+// 变量
+import { KEY_DATA_TRANSFER } from "@fe/constants";
+
 export default function CardList({ list }) {
   const handleDragStart = (e, item) => {
     // 设置拖拽数据
-    e.dataTransfer.setData("application/json", JSON.stringify(item));
+    e.dataTransfer.setData(KEY_DATA_TRANSFER, JSON.stringify(item));
     e.dataTransfer.effectAllowed = "copy";
   };
 
@@ -9,7 +12,7 @@ export default function CardList({ list }) {
     <div className="form-editor__material-list">
       {list.map((item) => (
         <div
-          key={item.id}
+          key={item.componentName}
           className="form-editor__material-list-item"
           draggable="true"
           onDragStart={(e) => handleDragStart(e, item)}

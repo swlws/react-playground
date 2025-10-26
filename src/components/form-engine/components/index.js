@@ -42,7 +42,7 @@ function makeMaterial(schemaList) {
 export const materialList = makeMaterial(schemaList);
 
 // UI 映射
-export const uiMap = {
+export const schemaMapUI = {
   [InputSchema.id]: InputUI,
   [SelectSchema.id]: SelectUI,
 };

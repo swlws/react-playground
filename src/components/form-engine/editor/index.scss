@@ -73,6 +73,7 @@
 }
 
 .form-editor__draw-board {
+  box-sizing: border-box;
   height: 100%;
   min-height: 400px;
   border: 2px dashed #ccc;

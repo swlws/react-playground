@@ -1,12 +1,13 @@
 import {
   ENUM_ATTR_VALUE_OPERATION_TYPE,
   ENUM_ATTR_VALUE_TYPE,
-  ENUM_MATERIAL_TYPE,
+  ENUM_MATERIAL_CATEGORY,
 } from "@fe/constants";
 
 export default {
+  id: "fe-input",
   /** 输入框物料 */
-  type: ENUM_MATERIAL_TYPE.FORM_ELEMENT,
+  category: ENUM_MATERIAL_CATEGORY.FORM_ELEMENT,
   name: "输入框",
   configSchema: {
     id: {

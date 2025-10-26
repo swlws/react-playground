@@ -1,13 +1,19 @@
 /**
  * 物料类型枚举
  */
-export const ENUM_MATERIAL_TYPE = {
+export const ENUM_MATERIAL_CATEGORY = {
   /** 布局物料 */
   LAYOUT: "layout",
   /** 表单元素物料 */
   FORM_ELEMENT: "form_element",
   /** 容器物料 */
   CONTAINER: "container",
+};
+
+export const ENUM_MATERIAL_CATEGORY_NAME = {
+  [ENUM_MATERIAL_CATEGORY.LAYOUT]: "布局物料",
+  [ENUM_MATERIAL_CATEGORY.FORM_ELEMENT]: "表单元素物料",
+  [ENUM_MATERIAL_CATEGORY.CONTAINER]: "容器物料",
 };
 
 /** 属性值类型枚举 */

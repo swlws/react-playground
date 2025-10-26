@@ -1,7 +1,17 @@
+import CardList from "./components/card-list";
+import { materialList } from "@fe/components";
+
 export default function Material() {
   return (
     <div className="form-editor__material">
-      <h2>物料库</h2>
+      {materialList.map((item) => (
+        <div key={item.type} className="form-editor__material-group">
+          <header className="form-editor__material-group__title">
+            {item.name}
+          </header>
+          <CardList list={item.children} />
+        </div>
+      ))}
     </div>
   );
 }

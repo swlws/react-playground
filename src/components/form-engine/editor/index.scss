@@ -39,3 +39,28 @@
     border-left: 1px solid var(--fe-border-color);
   }
 }
+
+.form-editor__material {
+  padding: 8px;
+  &-group {
+    margin: 8px 0;
+    &__title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--fe-main-title-color);
+      font-weight: 500;
+      border-bottom: 1px solid var(--fe-border-color);
+    }
+  }
+  &-list {
+    padding: 8px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    &-item {
+      padding: 8px;
+      border: 1px solid var(--fe-border-color);
+    }
+  }
+}

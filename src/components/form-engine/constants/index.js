@@ -25,10 +25,14 @@ export const ENUM_ATTR_VALUE_TYPE = {
 };
 
 export const ENUM_ATTR_VALUE_OPERATION_TYPE = {
+  /** ID操作 */
+  ID: "id",
   /** 文本操作 */
   TEXT: "text",
   /** 输入操作 */
   INPUT: "input",
+  /** 枚举操作 */
+  ENUM: "enum",
   /** 选择操作 */
   SELECT: "select",
   /** 复选框操作 */

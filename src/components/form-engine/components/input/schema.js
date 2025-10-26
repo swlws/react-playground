@@ -10,7 +10,7 @@ export default {
   category: ENUM_MATERIAL_CATEGORY.FORM_ELEMENT,
   name: "输入框",
   configSchema: {
-    id: {
+    componentId: {
       label: "ID",
       required: true,
       value: ENUM_ATTR_VALUE_TYPE.TEXT,

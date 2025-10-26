@@ -18,10 +18,10 @@ export default function withComponentWrap(WrappedComponent) {
         type: ENUM_COMPONENT_STATE_ACTION_TYPE.SET_ACTIVE,
         payload: {
           componentId,
-          active: !componentState.active,
+          active: true,
         },
       });
-    }, [componentStateDispatch, componentState.active, componentId]);
+    }, [componentStateDispatch, componentId]);
 
     return (
       <div

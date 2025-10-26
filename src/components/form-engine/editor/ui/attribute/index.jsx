@@ -1,7 +1,18 @@
+import CustomAttribute from "./custom";
+import EventAttribute from "./event";
+import ListenerAttribute from "./listener";
+
 export default function Attribute() {
   return (
-    <section className="form-editor__attribute">
-      <h2>属性面板</h2>
-    </section>
+    <article className="fe-editor-attribute">
+      <header className="fe-editor-attribute__header">
+        <CustomAttribute />
+      </header>
+
+      <section className="fe-editor-attribute__main">
+        <EventAttribute />
+        <ListenerAttribute />
+      </section>
+    </article>
   );
 }

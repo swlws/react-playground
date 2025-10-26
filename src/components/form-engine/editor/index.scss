@@ -1,0 +1,41 @@
+.form-editor {
+  height: 100%;
+
+  display: grid;
+  grid-template-columns: 300px 2fr 300px;
+  grid-template-rows: auto 1fr;
+
+  &__header {
+    grid-column: 1 / 4;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid var(--fe-border-color);
+  }
+
+  &__left-section {
+    grid-row: 2 / 3;
+    border-right: 1px solid var(--fe-border-color);
+  }
+
+  &__main {
+    grid-row: 2 / 3;
+    background-image: linear-gradient(
+        to right,
+        var(--fe-canvas-grid-color) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        var(--fe-canvas-grid-color) 1px,
+        transparent 1px
+      );
+    background-size: 20px 20px;
+  }
+
+  &__right-section {
+    grid-row: 2 / 3;
+    border-left: 1px solid var(--fe-border-color);
+  }
+}

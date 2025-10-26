@@ -1,7 +1,28 @@
+import Title from "./ui/title";
+import Material from "./ui/material";
+import DrawBoard from "./ui/draw-board";
+import Attribute from "./ui/attribute";
+
+import "./index.scss";
+
 export default function FormEditor() {
   return (
-    <div className="form-editor">
-      <h1>表单编辑器</h1>
-    </div>
+    <article className="form-editor">
+      <header className="form-editor__header">
+        <Title title="表单编辑器" />
+      </header>
+
+      <section className="form-editor__left-section">
+        <Material />
+      </section>
+
+      <main className="form-editor__main">
+        <DrawBoard />
+      </main>
+
+      <section className="form-editor__right-section">
+        <Attribute />
+      </section>
+    </article>
   );
 }

@@ -11,6 +11,7 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "@as": path.resolve(__dirname, "./src/components/advanced-search"),
+      "@fe": path.resolve(__dirname, "./src/components/form-engine"),
     },
   },
   build: {

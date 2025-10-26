@@ -1,4 +1,7 @@
-import { initComponentState } from "./component-state/state";
+import {
+  initComponentState,
+  setComponentActive,
+} from "./component-state/state";
 import { setComponentStyle } from "./component-state/style";
 import { ENUM_COMPONENT_STATE_ACTION_TYPE } from "./constants";
 
@@ -8,6 +11,13 @@ export function componentStateReducer(state, action) {
       return initComponentState({
         componentState: state,
         ...action.payload,
+      });
+    }
+    case ENUM_COMPONENT_STATE_ACTION_TYPE.SET_ACTIVE: {
+      return setComponentActive({
+        componentState: state,
+        componentId: action.payload.componentId,
+        active: action.payload.active,
       });
     }
     case ENUM_COMPONENT_STATE_ACTION_TYPE.SET_STYLE: {

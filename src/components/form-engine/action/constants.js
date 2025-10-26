@@ -4,6 +4,8 @@ export const ENUM_COMPONENT_STATE_ACTION_TYPE = {
   INIT_STATE: "init_state",
   /** 设置组件样式 */
   SET_STYLE: "set_style",
+  /** 设置组件激活状态 */
+  SET_ACTIVE: "set_active",
 };
 
 /** 组件树操作类型枚举 */

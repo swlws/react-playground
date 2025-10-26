@@ -9,3 +9,13 @@ export function initComponentState({ componentState, ...restParams }) {
     };
   });
 }
+
+export function setComponentActive({ componentState, componentId, active }) {
+  return produce(componentState, (draft) => {
+    Object.keys(draft).forEach((key) => {
+      draft[key].active = false;
+    });
+
+    draft[componentId].active = active;
+  });
+}

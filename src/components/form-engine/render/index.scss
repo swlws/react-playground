@@ -1,0 +1,8 @@
+.fe-render {
+  &__material-wrap {
+    border: 1px dashed transparent;
+    &.active {
+      border-color: var(--fe-border-color-active);
+    }
+  }
+}

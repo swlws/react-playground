@@ -1,6 +1,6 @@
 import { memo } from "react";
 
-import { schemaMapUI } from "@fe/components";
+import { schemaMapUI } from "@/components/form-engine/material";
 
 export default memo(function DyncComponent({ componentId, componentState }) {
   const { componentName } = componentState;

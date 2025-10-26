@@ -1,5 +1,5 @@
 import CardList from "./components/card-list";
-import { materialList } from "@fe/components";
+import { materialList } from "@/components/form-engine/material";
 
 export default function Material() {
   return (

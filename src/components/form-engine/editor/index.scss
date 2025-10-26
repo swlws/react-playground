@@ -61,6 +61,16 @@
     &-item {
       padding: 8px;
       border: 1px solid var(--fe-border-color);
+      border-radius: 4px;
+      user-select: none;
+
+      &:hover {
+        border-color: var(--fe-border-color-hover);
+        cursor: move;
+      }
     }
   }
+}
+
+.form-editor__draw-board {
 }

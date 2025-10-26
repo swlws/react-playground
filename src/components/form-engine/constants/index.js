@@ -1,3 +1,11 @@
+/** 表单模式枚举 */
+export const ENUM_FORM_MODE = {
+  /** 编辑模式 */
+  EDIT: "edit",
+  /** 查看模式 */
+  VIEW: "view",
+};
+
 /**
  * 物料类型枚举
  */

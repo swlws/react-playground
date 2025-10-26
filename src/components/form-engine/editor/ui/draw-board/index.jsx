@@ -1,5 +1,10 @@
-import { schemaMapUI } from "@/components/form-engine/components";
 import { useState } from "react";
+
+// 组件
+import FormRenderer from "@fe/render";
+
+// 变量
+import { ENUM_FORM_MODE } from "@/components/form-engine/constants";
 
 export default function DrawBoard() {
   const [isDragging, setIsDragging] = useState(false);
@@ -25,8 +30,6 @@ export default function DrawBoard() {
         e.dataTransfer.getData("application/json")
       );
 
-      console.log(materialData);
-
       if (materialData) {
         // 计算放置位置
         const rect = e.currentTarget.getBoundingClientRect();
@@ -48,26 +51,6 @@ export default function DrawBoard() {
     }
   };
 
-  const dyncRenderComponent = (componentSchema) => {
-    // 从schemaMapUI中获取对应的UI组件
-    const ComponentUI = schemaMapUI[componentSchema.id];
-
-    // 如果找不到对应的UI组件，返回一个提示信息
-    if (!ComponentUI) {
-      console.warn(`未找到组件: ${componentSchema.id}`);
-      return <div>未找到组件: {componentSchema.name}</div>;
-    }
-
-    // 传递必要的属性给组件
-    return (
-      <ComponentUI
-        key={componentSchema.id}
-        schema={componentSchema}
-        value={componentSchema.defaultValue}
-      />
-    );
-  };
-
   return (
     <div
       className={`form-editor__draw-board ${isDragging ? "dragging" : ""}`}
@@ -81,19 +64,10 @@ export default function DrawBoard() {
         </div>
       ) : (
         <div className="form-editor__draw-board-content">
-          {componentSchemaList.map((componentSchema) => (
-            <div
-              key={componentSchema.componentId}
-              className="form-editor__draw-board-component"
-              style={{
-                position: "absolute",
-                left: `${componentSchema.position.x}px`,
-                top: `${componentSchema.position.y}px`,
-              }}
-            >
-              {dyncRenderComponent(componentSchema)}
-            </div>
-          ))}
+          <FormRenderer
+            componentSchemaList={componentSchemaList}
+            mode={ENUM_FORM_MODE.EDIT}
+          />
         </div>
       )}
     </div>

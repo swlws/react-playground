@@ -1,5 +1,7 @@
 /** 组件状态操作类型枚举 */
 export const ENUM_COMPONENT_STATE_ACTION_TYPE = {
+  /** 初始化组件状态 */
+  INIT_STATE: "init_state",
   /** 设置组件样式 */
   SET_STYLE: "set_style",
 };

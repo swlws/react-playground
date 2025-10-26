@@ -50,9 +50,10 @@ export default function DrawBoard() {
         const componentId = `${componentName}__${crypto.randomUUID()}`;
         // 触发组件状态更新
         componentStateDispatch({
-          type: ENUM_COMPONENT_STATE_ACTION_TYPE.SET_STYLE,
+          type: ENUM_COMPONENT_STATE_ACTION_TYPE.INIT_STATE,
           payload: {
             componentId,
+            componentName,
             style: { position: "absolute", top: y, left: x },
           },
         });

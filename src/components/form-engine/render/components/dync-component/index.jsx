@@ -1,19 +1,18 @@
 import { memo } from "react";
 
 import { schemaMapUI } from "@fe/components";
+import { useComponentState } from "@/components/form-engine/context/component-state";
 
-export default memo(function DyncComponent({ schema, value }) {
-  // 从schemaMapUI中获取对应的UI组件
-  const ComponentUI = schemaMapUI[schema.componentName];
+export default memo(function DyncComponent({ componentId }) {
+  const componentState = useComponentState(componentId);
+  const { componentName } = componentState;
 
-  // 如果找不到对应的UI组件，返回一个提示信息
+  const ComponentUI = schemaMapUI[componentName];
+
   if (!ComponentUI) {
-    console.warn(`未找到组件: ${schema.componentName}`);
-    return <div>未找到组件: {schema.name}</div>;
+    console.warn(`未找到组件: ${componentName}`);
+    return <div>未找到组件: {componentName}</div>;
   }
 
-  // 传递必要的属性给组件
-  return (
-    <ComponentUI key={schema.componentName} schema={schema} value={value} />
-  );
+  return <ComponentUI key={componentId} />;
 });

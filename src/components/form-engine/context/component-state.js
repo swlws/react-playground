@@ -4,9 +4,7 @@ import { useContextSelector } from "use-context-selector";
 export const ComponentStateContext = createContext({});
 
 export const useComponentState = (componentId) => {
-  return useContextSelector(ComponentStateContext, (state) => {
-    return state[componentId] || {};
-  });
+  return useContext(ComponentStateContext)?.[componentId] || {};
 };
 
 export const ComponentStateDispatchContext = createContext({});

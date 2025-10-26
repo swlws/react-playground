@@ -1,7 +1,7 @@
 import { produce } from "immer";
 
-export function addComponent({ componentId, parentId }) {
-  return produce((draft) => {
+export function addComponent({ componentTree, componentId, parentId }) {
+  return produce(componentTree, (draft) => {
     draft.push({
       id: componentId,
       parentId,

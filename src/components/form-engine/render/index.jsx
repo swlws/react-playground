@@ -8,17 +8,17 @@ import { ENUM_FORM_MODE } from "@fe/constants";
 
 export default function FormRenderer({ mode = ENUM_FORM_MODE.EDIT } = {}) {
   const componentTree = useComponentTree();
-  console.log("========", componentTree);
+  console.log("====== componentTree", componentTree);
 
   return (
     <div className="form-renderer">
-      {componentTree.map((componentSchema) => (
+      {componentTree.map((component) => (
         <ComponentWrap
-          key={componentSchema.componentId}
+          key={component.id}
+          componentId={component.id}
           mode={mode}
-          schema={componentSchema}
         >
-          <DyncComponent schema={componentSchema} />
+          <DyncComponent schema={component} />
         </ComponentWrap>
       ))}
     </div>

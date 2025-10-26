@@ -3,8 +3,10 @@ import { useContextSelector } from "use-context-selector";
 
 export const ComponentStateContext = createContext({});
 
-export const useComponentState = () => {
-  return useContextSelector(ComponentStateContext, (state) => state);
+export const useComponentState = (componentId) => {
+  return useContextSelector(ComponentStateContext, (state) => {
+    return state[componentId] || {};
+  });
 };
 
 export const ComponentStateDispatchContext = createContext({});

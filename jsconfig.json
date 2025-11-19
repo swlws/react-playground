@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"],
-      "@as/*": ["src/components/advanced-search/*"]
+      "@as/*": ["src/components/advanced-search/*"],
+      "@fe/*": ["src/components/form-engine/*"],
     }
   },
   "include": ["src/**/*"],

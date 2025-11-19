@@ -1,0 +1,27 @@
+.fe-tabs {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: 1px solid var(--fe-border-color);
+
+  &__item {
+    cursor: pointer;
+    position: relative;
+    padding: 4px 12px;
+
+    & + .fe-tabs__item {
+      border-left: 1px solid var(--fe-border-color);
+    }
+
+    &--active:after {
+      content: "";
+      position: absolute;
+      bottom: 0px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--fe-border-color-hover);
+    }
+  }
+}

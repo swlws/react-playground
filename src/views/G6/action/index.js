@@ -1,7 +1,7 @@
-import { addOneEdge } from './core/edge';
-import { addOneNode } from './core/node';
+import { addOneEdge } from "./core/edge";
+import { addOneNode } from "./core/node";
 
-export { toggleAllCombos, toggleComboViaId } from './core/combo/index';
+export { toggleAllCombos, toggleComboViaId } from "./core/combo/index";
 
 export function addNodeEdge({ graph, type }) {
   const nodeList = graph.getNodeData();

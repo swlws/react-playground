@@ -1,13 +1,13 @@
-import { ENUM_LAYOUT_TYPE } from './core/constants';
-import { getBehavior } from './core/behaviors';
-import { getLayout } from './core/layout';
-import { getCombo } from './core/combo';
-import { getEdge } from './core/edge';
-import { getNode } from './core/node';
-import { getPlugins } from './core/plugins';
-import { getData } from './data';
+import { ENUM_LAYOUT_TYPE } from "./core/constants";
+import { getBehavior } from "./core/behaviors";
+import { getLayout } from "./core/layout";
+import { getCombo } from "./core/combo";
+import { getEdge } from "./core/edge";
+import { getNode } from "./core/node";
+import { getPlugins } from "./core/plugins";
+import { getData } from "./data";
 
-import './register/index';
+import "./register/index";
 
 export function getOption({ container }) {
   return {
@@ -17,8 +17,9 @@ export function getOption({ container }) {
     node: getNode(),
     edge: getEdge(),
     combo: getCombo(),
-    layout: getLayout({ type: ENUM_LAYOUT_TYPE.ANTV_DAGRE }),
+    layout: getLayout({ type: ENUM_LAYOUT_TYPE.MINDMAP }),
     behaviors: getBehavior(),
     plugins: getPlugins(),
+    animate: false,
   };
 }

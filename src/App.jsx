@@ -1,14 +1,14 @@
-import "./App.css";
-import DefineRoutes from "./define-routes";
-import { Link } from "react-router-dom";
-import { selectToken, setToken } from "./store/toolkit/features/sessionSlice";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import './App.css';
+import DefineRoutes from './define-routes';
+import { Link } from 'react-router-dom';
+import { selectToken, setToken } from './store/toolkit/features/sessionSlice';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   fetchUser,
   selectUserInfo,
   selectUserLoading,
-} from "./store/toolkit/features/userSlice";
+} from './store/toolkit/features/userSlice';
 
 function App() {
   const storeDispatch = useDispatch();
@@ -27,12 +27,13 @@ function App() {
     <article className="app-main ui-theme">
       <nav className="app-nav">
         <div>ID:{token}</div>
-        <div>{userLoading ? "..." : userInfo.name}</div>
+        <div>{userLoading ? '...' : userInfo.name}</div>
         <Link to="/">Home</Link>
         <Link to="/g6">G6</Link>
         <Link to="/demo">Demo</Link>
         <Link to="/crypto">Crypto</Link>
         <Link to="/form-engine">Form</Link>
+        <Link to="/k-chart">KChart</Link>
       </nav>
 
       <main className="app-content">

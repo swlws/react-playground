@@ -1,0 +1,46 @@
+import echarts from 'echarts';
+import BizConfig from './biz-config/index.js';
+import DataCenter from './data-center/index.js';
+import OptionCenter from './option-center/index.js';
+import EventCenter from './event-center/index.js';
+
+export default class KChartCore {
+  constructor(config) {
+    this.kChartConfig = config;
+
+    this.init();
+  }
+
+  init() {
+    this.ensureCanvas();
+
+    this.bizConfig = new BizConfig();
+
+    this.dataCenter = new DataCenter();
+    this.eventCenter = new EventCenter({ chartInstance: this.chartInstance });
+    this.optionCenter = new OptionCenter();
+  }
+
+  ensureCanvas() {
+    if (!this.chartInstance) return;
+
+    const { dom, width = 500, height = 500 } = this.kChartConfig;
+    this.chartInstance = echarts.init(dom, {
+      width,
+      height,
+    });
+  }
+
+  drawChart({ data }) {
+    const { xData, yData, seriesData } = this.dataCenter.getData(data);
+    const chartOption = this.optionCenter.getOption({
+      xData,
+      yData,
+      seriesData,
+    });
+
+    this.chartInstance.setOption(chartOption);
+  }
+
+  updateChart() {}
+}

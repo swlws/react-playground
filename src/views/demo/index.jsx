@@ -1,34 +1,35 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import WithErrorBoundary from '../../components/with-error-boundary';
+import { useCallback, useEffect, useRef, useState } from "react";
+import WithErrorBoundary from "../../components/with-error-boundary";
 
 let oldAddValueFn;
 let oldCallbackRef;
 function Demo() {
-  console.log('Demo Render');
+  console.log("Demo Render");
 
-  if (Math.random() > 0.5) {
-    throw new Error('error');
-  }
+  // if (Math.random() > 0.5) {
+  //   throw new Error('error');
+  // }
 
   const [value, setValue] = useState(1);
   const callbackRef = useRef(() => {});
 
   // 第一次 render 后，值为 true
-  console.log('callbackRef === oldCallbackRef', oldCallbackRef === callbackRef);
+  console.log("callbackRef === oldCallbackRef", oldCallbackRef === callbackRef);
   oldCallbackRef = callbackRef;
 
   const addValue = useCallback(() => {
-    console.log('call addValue');
-    setValue(value + 1);
+    console.log("call addValue");
+    setValue(value * 2);
+    setValue(value * 3);
   }, [value]);
 
   // 因为 value 的变化，导致 addValue 会每次重新创建
-  console.log('addValue === oldAddValueFn', oldAddValueFn === addValue);
+  console.log("addValue === oldAddValueFn", oldAddValueFn === addValue);
   oldAddValueFn = addValue;
 
   useEffect(() => {
-    console.log('🎯 useEffect run');
-    return () => console.log('🧹 cleanup');
+    console.log("🎯 useEffect run");
+    return () => console.log("🧹 cleanup");
   }, []);
 
   return (
@@ -41,7 +42,7 @@ function Demo() {
 
 const SafeComponent = WithErrorBoundary(Demo, (error, reset) => (
   <div>
-    <p style={{ color: 'red' }}>组件出错: {error.message}</p>
+    <p style={{ color: "red" }}>组件出错: {error.message}</p>
     <button onClick={reset}>重试</button>
   </div>
 ));

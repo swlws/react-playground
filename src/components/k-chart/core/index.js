@@ -1,8 +1,8 @@
-import echarts from 'echarts';
-import BizConfig from './biz-config/index.js';
-import DataCenter from './data-center/index.js';
-import OptionCenter from './option-center/index.js';
-import EventCenter from './event-center/index.js';
+import { init } from "echarts";
+import BizConfig from "./biz-config/index.js";
+import DataCenter from "./data-center/index.js";
+import OptionCenter from "./option-center/index.js";
+import EventCenter from "./event-center/index.js";
 
 export default class KChartCore {
   constructor(config) {
@@ -22,10 +22,10 @@ export default class KChartCore {
   }
 
   ensureCanvas() {
-    if (!this.chartInstance) return;
+    if (this.chartInstance) return;
 
     const { dom, width = 500, height = 500 } = this.kChartConfig;
-    this.chartInstance = echarts.init(dom, {
+    this.chartInstance = init(dom, {
       width,
       height,
     });

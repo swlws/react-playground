@@ -1,8 +1,8 @@
-import { GRID_ID_ENUM, SERIES_NAME_ENUM } from '../constant/key';
-import { getDataZoomInside, getDataZoomSlider } from './data-zoom';
-import { getBarSeries, getLineSeries } from './series';
-import { getXAxis } from './x-axis';
-import { getYAxis } from './y-axis';
+import { GRID_ID_ENUM, SERIES_NAME_ENUM } from "../constant/key";
+import { getDataZoomInside, getDataZoomSlider } from "./data-zoom";
+import { getBarSeries, getLineSeries } from "./series";
+import { getXAxis } from "./x-axis";
+import { getYAxis } from "./y-axis";
 
 export default class OptionCenter {
   constructor() {
@@ -18,13 +18,13 @@ export default class OptionCenter {
       emphasis: { disabled: true },
       dataZoom: [getDataZoomInside(), getDataZoomSlider()],
       grid: [
-        { id: GRID_ID_ENUM.MAIN, top: '20%', bottom: '20%' },
-        { id: GRID_ID_ENUM.FOOTER, top: '90%', bottom: '10%' },
+        { id: GRID_ID_ENUM.MAIN, top: "20%", bottom: "20%" },
+        { id: GRID_ID_ENUM.FOOTER, top: "90%", bottom: "10%" },
       ],
       xAxis: [
         getXAxis({
           gridIndex: 0,
-          data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+          data: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
         }),
         getXAxis({ gridIndex: 1, data: [] }),
       ],
@@ -38,7 +38,7 @@ export default class OptionCenter {
         }),
         getBarSeries({
           name: SERIES_NAME_ENUM.VOLUME,
-          xAxisIndex: 0,
+          xAxisIndex: 1,
           yAxisIndex: 1,
           data: [],
         }),

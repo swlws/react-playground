@@ -1,1 +1,5 @@
-export default class SeriesData {}
+export default class SeriesData {
+  getData() {
+    return {};
+  }
+}

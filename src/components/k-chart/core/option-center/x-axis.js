@@ -34,7 +34,12 @@ export const getXAxis = ({ gridIndex, data }) => {
     data,
     axisTick: { show: false },
     axisLine: { show: false },
-    axisLabel: { show: true },
+    axisLabel: {
+      show: true,
+      formatter: (value) => {
+        return value;
+      },
+    },
     axisPointer: getXAxisPointer(),
   };
 };

@@ -17,6 +17,10 @@ export default function KChart() {
     kChartCore.drawChart({ data: mockData() });
 
     componentRef.current.kChartCore = kChartCore;
+
+    return () => {
+      kChartCore.destroy();
+    };
   }, []);
 
   return (

@@ -30,6 +30,14 @@ export default class KChartCore {
       width: width - (GRID_LEFT_MARGIN + GRID_RIGHT_MARGIN),
       height,
     });
+
+    this.domObserve = new ResizeObserver((entries) => {
+      for (const entry of entries) {
+        const { width, height } = entry.contentRect;
+        this.chartInstance.resize({ width, height });
+      }
+    });
+    this.domObserve.observe(dom);
   }
 
   drawChart({ data }) {
@@ -46,4 +54,9 @@ export default class KChartCore {
   }
 
   updateChart() {}
+
+  destroy() {
+    this.eventCenter.destroy();
+    this.chartInstance.dispose();
+  }
 }

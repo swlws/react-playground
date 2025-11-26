@@ -14,6 +14,7 @@ export default class XData {
     return data.map((item) => {
       return {
         value: moment(item.time).format('HH:mm'),
+        show: Math.random() > 0.5,
       };
     });
   }

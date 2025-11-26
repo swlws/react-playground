@@ -1,24 +1,29 @@
+import {
+  DATA_ZOOM_MAX_SPAN,
+  DATA_ZOOM_MIN_SPAN,
+  X_AXIS_ENUM,
+} from '../constant/key';
+
 export const getDataZoomInside = () => ({
   type: 'inside',
   // 影响的轴
-  xAxisIndex: [0, 1, 2, 3],
-  // ToDo: 动态控制，根据日、周、月、年维度和数据设置不同宽度
-  start: 70,
+  xAxisIndex: [X_AXIS_ENUM.INDEX_0, X_AXIS_ENUM.INDEX_1],
+  start: 0,
   end: 100,
-  minValueSpan: 90,
+  minValueSpan: DATA_ZOOM_MIN_SPAN,
+  maxValueSpan: DATA_ZOOM_MAX_SPAN,
 });
 
 export const getDataZoomSlider = () => ({
+  type: 'slider',
   show: false,
   // 影响的轴
-  xAxisIndex: [0, 1, 2, 3],
-  type: 'slider',
+  xAxisIndex: [X_AXIS_ENUM.INDEX_0, X_AXIS_ENUM.INDEX_1],
   top: '90%',
   start: 0,
   end: 100,
-  minValueSpan: 90,
-  // maxValueSpan: 50,
-  height: '48px',
+  minValueSpan: DATA_ZOOM_MIN_SPAN,
+  maxValueSpan: DATA_ZOOM_MAX_SPAN,
   // 选中范围的填充颜色
   fillerColor: 'rgba(22, 93, 255, 0.2)',
   // 更换两侧缩放手柄的 icon 形状

@@ -1,3 +1,13 @@
+export function getCandlestickSeries({ name, xAxisIndex, yAxisIndex, data }) {
+  return {
+    name,
+    type: 'candlestick',
+    xAxisIndex,
+    yAxisIndex,
+    data,
+  };
+}
+
 export function getLineSeries({ name, xAxisIndex, yAxisIndex, data }) {
   return {
     name,

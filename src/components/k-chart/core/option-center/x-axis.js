@@ -40,6 +40,6 @@ export const getXAxis = ({ gridIndex, data }) => {
         return value;
       },
     },
-    axisPointer: getXAxisPointer(),
+    axisPointer2: getXAxisPointer(),
   };
 };

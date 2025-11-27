@@ -2,6 +2,7 @@ import { SERIES_NAME_ENUM, X_AXIS_ENUM } from '../constant/key';
 import { getDataZoomInside, getDataZoomSlider } from './data-zoom';
 import { getDefaultGrid } from './grid';
 import { getBarSeries, getCandlestickSeries } from './series';
+import { getTooltipConfig } from './tooltip';
 import { getXAxis } from './x-axis';
 import { getYAxis } from './y-axis';
 
@@ -15,6 +16,8 @@ export default class OptionCenter {
       animation: false,
       toolbox: { show: false },
       legend: { show: false },
+      tooltip: getTooltipConfig(),
+      axisPointer: { show: true, link: [{ xAxisIndex: 'all' }] },
       /** 全局关闭悬浮效果 */
       emphasis: { disabled: true },
       dataZoom: [getDataZoomInside(), getDataZoomSlider()],

@@ -12,6 +12,7 @@ function Demo() {
 
   const [value, setValue] = useState(1);
   const callbackRef = useRef(() => {});
+  const buttonRef = useRef(null);
 
   // 第一次 render 后，值为 true
   console.log("callbackRef === oldCallbackRef", oldCallbackRef === callbackRef);
@@ -29,13 +30,23 @@ function Demo() {
 
   useEffect(() => {
     console.log("🎯 useEffect run");
-    return () => console.log("🧹 cleanup");
+
+    const log = () => {
+      console.log("navtive call addValue ");
+    };
+    buttonRef.current?.addEventListener("click", log);
+    return () => {
+      buttonRef.current?.removeEventListener("click", log);
+      console.log("🧹 cleanup");
+    };
   }, []);
 
   return (
     <div>
       value: {value}
-      <button onClick={addValue}>add value</button>
+      <button ref={buttonRef} onClick={addValue}>
+        add value
+      </button>
     </div>
   );
 }

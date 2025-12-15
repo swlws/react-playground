@@ -11,11 +11,11 @@ export default class DataCenter {
     this.seriesData = new SeriesData();
   }
 
-  getData() {
+  getData({ data }) {
     return {
-      xData: this.xData.getData(),
-      yData: this.yData.getData(),
-      seriesData: this.seriesData.getData(),
+      xData: this.xData.getData({ data }),
+      yData: this.yData.getData({ data }),
+      seriesData: this.seriesData.getData({ data }),
     };
   }
 }

@@ -20,9 +20,6 @@ const getXAxisPointer = () => {
       lineHeight: 13,
       fontSize: 12,
       formatter({ value }) {
-        // let weekNum = WEEK_NAME_MAP[moment(value).day()] || ''
-        // return value ? value + ' ' + weekNum : ''
-        // return moment(value).format('HH:mm');
         return value;
       },
     },
@@ -35,11 +32,14 @@ export const getXAxis = ({ gridIndex, data }) => {
     gridIndex,
     boundaryGap: true,
     data,
-    min: 'dataMin',
-    max: 'dataMax',
     axisTick: { show: false },
     axisLine: { show: false },
-    axisLabel: { show: false },
-    axisPointer: getXAxisPointer(),
+    axisLabel: {
+      show: true,
+      formatter: (value) => {
+        return value;
+      },
+    },
+    axisPointer2: getXAxisPointer(),
   };
 };

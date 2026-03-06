@@ -34,6 +34,7 @@ function App() {
         <Link to="/crypto">Crypto</Link>
         <Link to="/form-engine">Form</Link>
         <Link to="/k-chart">KChart</Link>
+        <Link to="/deduplicate">去重</Link>
       </nav>
 
       <main className="app-content">

@@ -10,6 +10,7 @@ const Crypto = React.lazy(() => import('./views/crypto/index'));
 const G6 = React.lazy(() => import('./views/G6/index'));
 const FormEngine = React.lazy(() => import('./views/form-engine/index'));
 const KChartViewer = React.lazy(() => import('./views/k-chart-viewer/index'));
+const DeduplicateDemo = React.lazy(() => import('./views/deduplicate-demo/index'));
 
 export default function DefineRoutes() {
   return (
@@ -21,6 +22,7 @@ export default function DefineRoutes() {
         <Route path="/g6" element={<G6 />} />
         <Route path="/form-engine" element={<FormEngine />} />
         <Route path="/k-chart" element={<KChartViewer />} />
+        <Route path="/deduplicate" element={<DeduplicateDemo />} />
       </Routes>
     </Suspense>
   );
